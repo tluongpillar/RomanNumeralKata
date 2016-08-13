@@ -16,7 +16,8 @@ For this programming exercise, you will be creating a library which will allow t
 - The C programming language
 - GNU GCC compiler tool chain
 - GNU Make
-- Check unit testing framework ( https://libcheck.github.io/check/ ) ● git
+- Check unit testing framework ( https://libcheck.github.io/check/ )
+- git
 
 ## Roman Numeral rules:
 - Roman numerals consist of the following letters: I, V, X, L, C, D, and M which mean one, five, ten, fifty, hundred, five hundred and one thousand respectively.
