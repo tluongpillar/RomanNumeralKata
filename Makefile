@@ -1,11 +1,18 @@
-main: src/main.c
-	gcc -o main src/main.c
+CC=gcc
+SRC=src/
+TEST=tests/
+
+main:
+	${CC} -o main ${SRC}main.c
 
 clean:
 	rm main
 
+clean_test:
+	rm check_libcheck.o check_tests
+
 check: check_libcheck.o
-	gcc -o check_tests check_libcheck.o -lcheck -lpthread -lm -lrt
+	${CC} -o check_tests check_libcheck.o -lcheck -lpthread -lm -lrt
 
 check_libcheck.o:
-	gcc -c tests/check_libcheck.c -o check_libcheck.o
+	${CC} -c ${TEST}check_libcheck.c -o check_libcheck.o
