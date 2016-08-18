@@ -13,7 +13,8 @@ clean_test:
 
 check: roman_numeral.o check_suite_runner.o check_roman_numeral.o check_libcheck.o
 	${CC} -o check_tests roman_numeral.o check_suite_runner.o check_roman_numeral.o check_libcheck.o -lcheck -lpthread -lm -lrt
-
+	./check_tests
+	
 roman_numeral.o:
 	${CC} -c ${SRC}roman_numeral.c -o roman_numeral.o
 
