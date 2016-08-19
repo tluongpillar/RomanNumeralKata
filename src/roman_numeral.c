@@ -2,6 +2,11 @@
 
 uint is_roman_numeral(char roman_numeral)
 {
+  if (roman_numeral == NULL)
+  {
+    return 0;
+  }
+  
   char valid_roman_numerals[] = "IVXLCDM";
   int valid_roman_numerals_count = sizeof(valid_roman_numerals) / sizeof(valid_roman_numerals[0]);
 
