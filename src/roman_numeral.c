@@ -8,7 +8,9 @@ uint is_roman_numeral(char roman_numeral)
   int index;
   for (index = 0; index < valid_roman_numerals_count; ++index)
   {
-    if (roman_numeral == valid_roman_numerals[index])
+    char roman_numeral_uppercase = toupper(roman_numeral);
+
+    if (roman_numeral_uppercase == valid_roman_numerals[index])
     {
       return 1;
     }
