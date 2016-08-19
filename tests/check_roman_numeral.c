@@ -2,7 +2,17 @@
 
 START_TEST (test_is_roman_numeral__given_invalid_roman_numeral__returns_false)
 {
-  ck_assert_uint_eq(0, is_roman_numeral('a'));
+  char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
+  int invalid_roman_numerals_count = sizeof(invalid_roman_numerals) / sizeof(invalid_roman_numerals[0]);
+
+  int index;
+  for (index = 0; index < invalid_roman_numerals_count; ++index)
+  {
+    ck_assert_uint_eq(0, is_roman_numeral(invalid_roman_numerals[index]));
+
+    char invalid_roman_numeral_lowercase = tolower(invalid_roman_numerals[index]);
+    ck_assert_uint_eq(0, is_roman_numeral(invalid_roman_numeral_lowercase));
+  }
 }
 END_TEST
 
