@@ -6,7 +6,7 @@ uint is_roman_numeral(char roman_numeral)
   {
     return 0;
   }
-  
+
   char valid_roman_numerals[] = "IVXLCDM";
   int valid_roman_numerals_count = sizeof(valid_roman_numerals) / sizeof(valid_roman_numerals[0]);
 
@@ -21,5 +21,10 @@ uint is_roman_numeral(char roman_numeral)
     }
   }
 
+  return 0;
+}
+
+uint get_arabic_value_from_roman_numeral(char *roman_numeral)
+{
   return 0;
 }
