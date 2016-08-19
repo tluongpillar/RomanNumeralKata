@@ -3,7 +3,7 @@
 START_TEST (test_is_roman_numeral__given_invalid_roman_numeral__returns_false)
 {
   char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
-  int invalid_roman_numerals_count = sizeof(invalid_roman_numerals) / sizeof(invalid_roman_numerals[0]);
+  int invalid_roman_numerals_count = sizeof(invalid_roman_numerals) / sizeof(invalid_roman_numerals[0]) - 1;
 
   int index;
   for (index = 0; index < invalid_roman_numerals_count; ++index)
@@ -19,7 +19,7 @@ END_TEST
 START_TEST (test_is_roman_numeral__given_valid_roman_numeral__returns_true)
 {
   char valid_roman_numerals[] = "IVXLCDM";
-  int valid_roman_numerals_count = sizeof(valid_roman_numerals) / sizeof(valid_roman_numerals[0]);
+  int valid_roman_numerals_count = sizeof(valid_roman_numerals) / sizeof(valid_roman_numerals[0]) - 1;
 
   int index;
   for (index = 0; index < valid_roman_numerals_count; ++index)
