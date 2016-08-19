@@ -26,5 +26,5 @@ uint is_roman_numeral(char roman_numeral)
 
 uint get_arabic_value_from_roman_numeral(char *roman_numeral)
 {
-  return 0;
+  return (roman_numeral[0] == 'I') ? 1 : 0;
 }
