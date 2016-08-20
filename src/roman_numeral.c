@@ -19,30 +19,30 @@ bool is_roman_numeral(char roman_numeral)
 
 unsigned int get_arabic_value_from_roman_numeral(char roman_numeral)
 {
-  int arabic_value = 0;
+  int arabic_value = ARABIC_VALUE_ZERO;
 
   switch (roman_numeral)
   {
     case ROMAN_NUMERAL_LETTER_I:
-      arabic_value = 1;
+      arabic_value = ARABIC_VALUE_ONE;
       break;
     case ROMAN_NUMERAL_LETTER_V:
-      arabic_value = 5;
+      arabic_value = ARABIC_VALUE_FIVE;
       break;
     case ROMAN_NUMERAL_LETTER_X:
-      arabic_value = 10;
+      arabic_value = ARABIC_VALUE_TEN;
       break;
     case ROMAN_NUMERAL_LETTER_L:
-      arabic_value = 50;
+      arabic_value = ARABIC_VALUE_FIFTY;
       break;
     case ROMAN_NUMERAL_LETTER_C:
-      arabic_value = 100;
+      arabic_value = ARABIC_VALUE_ONE_HUNDRED;
       break;
     case ROMAN_NUMERAL_LETTER_D:
-      arabic_value = 500;
+      arabic_value = ARABIC_VALUE_FIVE_HUNDRED;
       break;
     case ROMAN_NUMERAL_LETTER_M:
-      arabic_value = 1000;
+      arabic_value = ARABIC_VALUE_ONE_THOUSAND;
       break;
     default:
       break;
