@@ -14,6 +14,13 @@ START_TEST (test_get_arabic_value_from_roman_numeral__given_V__returns_5)
 }
 END_TEST
 
+START_TEST (test_get_arabic_value_from_roman_numeral__given_X__returns_10)
+{
+  char *roman_numeral = "X";
+  ck_assert_uint_eq(10, get_arabic_value_from_roman_numeral(roman_numeral));
+}
+END_TEST
+
 START_TEST (test_is_roman_numeral__given_invalid_roman_numeral__returns_false)
 {
   char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
@@ -54,6 +61,7 @@ Suite * roman_numeral_suite()
 
   tcase_add_test(tcase_core, test_get_arabic_value_from_roman_numeral__given_I__returns_1);
   tcase_add_test(tcase_core, test_get_arabic_value_from_roman_numeral__given_V__returns_5);
+  tcase_add_test(tcase_core, test_get_arabic_value_from_roman_numeral__given_X__returns_10);
   tcase_add_test(tcase_core, test_is_roman_numeral__given_invalid_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_roman_numeral__given_valid_roman_numeral__returns_true);
   suite_add_tcase(suite, tcase_core);
