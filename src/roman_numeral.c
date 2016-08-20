@@ -1,6 +1,6 @@
 #include "headers/roman_numeral.h"
 
-uint is_roman_numeral(char roman_numeral)
+bool is_roman_numeral(char roman_numeral)
 {
   char valid_roman_numerals[] = "IVXLCDM";
 
@@ -11,11 +11,11 @@ uint is_roman_numeral(char roman_numeral)
 
     if (roman_numeral_uppercase == valid_roman_numerals[index])
     {
-      return 1;
+      return true;
     }
   }
 
-  return 0;
+  return false;
 }
 
 uint get_arabic_value_from_roman_numeral(char *roman_numeral)
