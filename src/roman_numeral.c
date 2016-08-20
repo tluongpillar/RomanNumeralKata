@@ -17,11 +17,11 @@ bool is_roman_numeral(char roman_numeral)
   }
 }
 
-unsigned int get_arabic_value_from_roman_numeral(char *roman_numeral)
+unsigned int get_arabic_value_from_roman_numeral(char roman_numeral)
 {
   int arabic_value = 0;
 
-  switch (*roman_numeral)
+  switch (roman_numeral)
   {
     case ROMAN_NUMERAL_LETTER_I:
       arabic_value = 1;
