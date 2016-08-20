@@ -2,20 +2,19 @@
 
 bool is_roman_numeral(char roman_numeral)
 {
-  char valid_roman_numerals[] = "IVXLCDM";
-
-  int index;
-  for (index = 0; index < strlen(valid_roman_numerals); ++index)
+  switch (toupper(roman_numeral))
   {
-    char roman_numeral_uppercase = toupper(roman_numeral);
-
-    if (roman_numeral_uppercase == valid_roman_numerals[index])
-    {
+    case 'I':
+    case 'V':
+    case 'X':
+    case 'L':
+    case 'C':
+    case 'D':
+    case 'M':
       return true;
-    }
+    default:
+      return false;
   }
-
-  return false;
 }
 
 unsigned int get_arabic_value_from_roman_numeral(char *roman_numeral)
