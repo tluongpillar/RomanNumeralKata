@@ -35,6 +35,9 @@ unsigned int get_arabic_value_from_roman_numeral(char *roman_numeral)
     case 'L':
       arabic_value = 50;
       break;
+    case 'C':
+      arabic_value = 100;
+      break;
     default:
       break;
   }
