@@ -2,49 +2,49 @@
 
 START_TEST (test_get_arabic_value_from_roman_numeral__given_I__returns_1)
 {
-  char *roman_numeral = "I";
+  char roman_numeral = 'I';
   ck_assert_uint_eq(1, get_arabic_value_from_roman_numeral(roman_numeral));
 }
 END_TEST
 
 START_TEST (test_get_arabic_value_from_roman_numeral__given_V__returns_5)
 {
-  char *roman_numeral = "V";
+  char roman_numeral = 'V';
   ck_assert_uint_eq(5, get_arabic_value_from_roman_numeral(roman_numeral));
 }
 END_TEST
 
 START_TEST (test_get_arabic_value_from_roman_numeral__given_X__returns_10)
 {
-  char *roman_numeral = "X";
+  char roman_numeral = 'X';
   ck_assert_uint_eq(10, get_arabic_value_from_roman_numeral(roman_numeral));
 }
 END_TEST
 
 START_TEST (test_get_arabic_value_from_roman_numeral__given_L__returns_50)
 {
-  char *roman_numeral = "L";
+  char roman_numeral = 'L';
   ck_assert_uint_eq(50, get_arabic_value_from_roman_numeral(roman_numeral));
 }
 END_TEST
 
 START_TEST (test_get_arabic_value_from_roman_numeral__given_C__returns_100)
 {
-  char *roman_numeral = "C";
+  char roman_numeral = 'C';
   ck_assert_uint_eq(100, get_arabic_value_from_roman_numeral(roman_numeral));
 }
 END_TEST
 
 START_TEST (test_get_arabic_value_from_roman_numeral__given_D__returns_500)
 {
-  char *roman_numeral = "D";
+  char roman_numeral = 'D';
   ck_assert_uint_eq(500, get_arabic_value_from_roman_numeral(roman_numeral));
 }
 END_TEST
 
 START_TEST (test_get_arabic_value_from_roman_numeral__given_M__returns_1000)
 {
-  char *roman_numeral = "M";
+  char roman_numeral = 'M';
   ck_assert_uint_eq(1000, get_arabic_value_from_roman_numeral(roman_numeral));
 }
 END_TEST
