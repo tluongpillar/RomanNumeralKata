@@ -23,7 +23,7 @@ END_TEST
 
 START_TEST (test_get_arabic_value_from_roman_numeral__given_L__returns_50)
 {
-  char *roman_numeral = "X";
+  char *roman_numeral = "L";
   ck_assert_uint_eq(50, get_arabic_value_from_roman_numeral(roman_numeral));
 }
 END_TEST
