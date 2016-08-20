@@ -16,8 +16,14 @@ START_TEST (test_is_roman_numeral__given_invalid_roman_numeral__returns_false)
 {
   char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
 
+  int alphabet_letters_count = 26;
+  int valid_roman_numeral_letters_count = 7;
+  int invalid_roman_numeral_letters_count = strlen(invalid_roman_numerals);
+
+  ck_assert_int_eq(alphabet_letters_count, valid_roman_numeral_letters_count + invalid_roman_numeral_letters_count);
+
   int index;
-  for (index = 0; index < strlen(invalid_roman_numerals); ++index)
+  for (index = 0; index < invalid_roman_numeral_letters_count; ++index)
   {
     ck_assert(is_roman_numeral(invalid_roman_numerals[index]) == false);
 
