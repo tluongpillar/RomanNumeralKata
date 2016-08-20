@@ -29,7 +29,11 @@ END_TEST
 
 START_TEST (test_is_roman_numeral__given_valid_roman_numeral__returns_true)
 {
-  char valid_roman_numerals[] = "IVXLCDM";
+  char valid_roman_numerals[] = {
+    ROMAN_NUMERAL_LETTER_I, ROMAN_NUMERAL_LETTER_V, ROMAN_NUMERAL_LETTER_X,
+    ROMAN_NUMERAL_LETTER_L, ROMAN_NUMERAL_LETTER_C, ROMAN_NUMERAL_LETTER_D,
+    ROMAN_NUMERAL_LETTER_M
+  };
 
   int index;
   for (index = 0; index < strlen(valid_roman_numerals); ++index)
