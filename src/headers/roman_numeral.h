@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include <ctype.h>
 
+#define ROMAN_NUMERAL_LETTERS_COUNT 7
+
 #define ROMAN_NUMERAL_LETTER_I 'I'
 #define ROMAN_NUMERAL_LETTER_V 'V'
 #define ROMAN_NUMERAL_LETTER_X 'X'

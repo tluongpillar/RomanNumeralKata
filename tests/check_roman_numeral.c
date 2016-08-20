@@ -16,11 +16,10 @@ START_TEST (test_is_roman_numeral__given_invalid_roman_numeral__returns_false)
 {
   char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
 
-  int alphabet_letters_count = 26;
-  int valid_roman_numeral_letters_count = 7;
+  int standard_US_alphabet_letters_count = 26;
   int invalid_roman_numeral_letters_count = strlen(invalid_roman_numerals);
 
-  ck_assert_int_eq(alphabet_letters_count, valid_roman_numeral_letters_count + invalid_roman_numeral_letters_count);
+  ck_assert_int_eq(standard_US_alphabet_letters_count, ROMAN_NUMERAL_LETTERS_COUNT + invalid_roman_numeral_letters_count);
 
   int index;
   for (index = 0; index < invalid_roman_numeral_letters_count; ++index)
@@ -43,7 +42,7 @@ START_TEST (test_is_roman_numeral__given_valid_roman_numeral__returns_true)
 
   int valid_roman_numeral_letters_count = strlen(valid_roman_numerals);
 
-  ck_assert_int_eq(7, valid_roman_numeral_letters_count);
+  ck_assert_int_eq(ROMAN_NUMERAL_LETTERS_COUNT, valid_roman_numeral_letters_count);
 
   int index;
   for (index = 0; index < valid_roman_numeral_letters_count; ++index)
