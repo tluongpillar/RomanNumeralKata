@@ -2,11 +2,6 @@
 
 uint is_roman_numeral(char roman_numeral)
 {
-  if (roman_numeral == NULL)
-  {
-    return 0;
-  }
-
   char valid_roman_numerals[] = "IVXLCDM";
 
   int index;
