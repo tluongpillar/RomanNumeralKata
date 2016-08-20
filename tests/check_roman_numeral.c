@@ -14,10 +14,10 @@ START_TEST (test_is_roman_numeral__given_invalid_roman_numeral__returns_false)
   int index;
   for (index = 0; index < strlen(invalid_roman_numerals); ++index)
   {
-    ck_assert_uint_eq(0, is_roman_numeral(invalid_roman_numerals[index]));
+    ck_assert(is_roman_numeral(invalid_roman_numerals[index]) == false);
 
     char invalid_roman_numeral_lowercase = tolower(invalid_roman_numerals[index]);
-    ck_assert_uint_eq(0, is_roman_numeral(invalid_roman_numeral_lowercase));
+    ck_assert(is_roman_numeral(invalid_roman_numeral_lowercase) == false);
   }
 }
 END_TEST
@@ -29,10 +29,10 @@ START_TEST (test_is_roman_numeral__given_valid_roman_numeral__returns_true)
   int index;
   for (index = 0; index < strlen(valid_roman_numerals); ++index)
   {
-    ck_assert_uint_eq(1, is_roman_numeral(valid_roman_numerals[index]));
+    ck_assert(is_roman_numeral(valid_roman_numerals[index]) == true);
 
     char valid_roman_numeral_lowercase = tolower(valid_roman_numerals[index]);
-    ck_assert_uint_eq(1, is_roman_numeral(valid_roman_numeral_lowercase));
+    ck_assert(is_roman_numeral(valid_roman_numeral_lowercase) == true);
   }
 }
 END_TEST
