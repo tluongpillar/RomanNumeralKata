@@ -41,8 +41,12 @@ START_TEST (test_is_roman_numeral__given_valid_roman_numeral__returns_true)
     ROMAN_NUMERAL_LETTER_M
   };
 
+  int valid_roman_numeral_letters_count = strlen(valid_roman_numerals);
+
+  ck_assert_int_eq(7, valid_roman_numeral_letters_count);
+
   int index;
-  for (index = 0; index < strlen(valid_roman_numerals); ++index)
+  for (index = 0; index < valid_roman_numeral_letters_count; ++index)
   {
     ck_assert(is_roman_numeral(valid_roman_numerals[index]) == true);
 
