@@ -19,5 +19,19 @@ bool is_roman_numeral(char roman_numeral)
 
 unsigned int get_arabic_value_from_roman_numeral(char *roman_numeral)
 {
-  return (roman_numeral[0] == 'I') ? 1 : 0;
+  int arabic_value = 0;
+
+  switch (*roman_numeral)
+  {
+    case 'I':
+      arabic_value = 1;
+      break;
+    case 'V':
+      arabic_value = 5;
+      break;
+    default:
+      break;
+  }
+
+  return arabic_value;
 }
