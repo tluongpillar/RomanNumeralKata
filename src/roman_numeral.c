@@ -29,6 +29,8 @@ unsigned int get_arabic_value_from_roman_numeral(char *roman_numeral)
     case 'V':
       arabic_value = 5;
       break;
+    case 'X':
+      arabic_value = 10;
     default:
       break;
   }
