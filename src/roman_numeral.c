@@ -18,7 +18,7 @@ bool is_roman_numeral(char roman_numeral)
   return false;
 }
 
-uint get_arabic_value_from_roman_numeral(char *roman_numeral)
+unsigned int get_arabic_value_from_roman_numeral(char *roman_numeral)
 {
   return (roman_numeral[0] == 'I') ? 1 : 0;
 }
