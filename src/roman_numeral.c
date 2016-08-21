@@ -1,8 +1,8 @@
 #include "headers/roman_numeral.h"
 
-bool is_roman_numeral(char roman_numeral)
+bool is_roman_numeral_letter(char roman_numeral_letter)
 {
-  switch (toupper(roman_numeral))
+  switch (toupper(roman_numeral_letter))
   {
     case ROMAN_NUMERAL_LETTER_I:
     case ROMAN_NUMERAL_LETTER_V:
@@ -17,11 +17,11 @@ bool is_roman_numeral(char roman_numeral)
   }
 }
 
-unsigned int get_arabic_value_from_roman_numeral(char roman_numeral)
+unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_letter)
 {
   int arabic_value = ARABIC_VALUE_ZERO;
 
-  switch (roman_numeral)
+  switch (roman_numeral_letter)
   {
     case ROMAN_NUMERAL_LETTER_I:
       arabic_value = ARABIC_VALUE_ONE;

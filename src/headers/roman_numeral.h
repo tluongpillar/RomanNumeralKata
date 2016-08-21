@@ -22,5 +22,5 @@
 #define ARABIC_VALUE_FIVE_HUNDRED 500
 #define ARABIC_VALUE_ONE_THOUSAND 1000
 
-bool is_roman_numeral(char roman_numeral);
-unsigned int get_arabic_value_from_roman_numeral(char roman_numeral);
+bool is_roman_numeral_letter(char roman_numeral_letter);
+unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_letter);
