@@ -53,5 +53,33 @@ unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_lette
 
 char get_roman_numeral_letter_from_arabic_value(unsigned int arabic_value)
 {
-  return 'A';
+  char roman_numeral_letter = 'A';
+
+  switch (arabic_value)
+  {
+    case ARABIC_VALUE_ONE:
+    roman_numeral_letter = ROMAN_NUMERAL_LETTER_I;
+    break;
+    case ARABIC_VALUE_FIVE:
+    roman_numeral_letter = ROMAN_NUMERAL_LETTER_V;
+    break;
+    case ARABIC_VALUE_TEN:
+    roman_numeral_letter = ROMAN_NUMERAL_LETTER_X;
+    break;
+    case ARABIC_VALUE_FIFTY:
+    roman_numeral_letter = ROMAN_NUMERAL_LETTER_L;
+    break;
+    case ARABIC_VALUE_ONE_HUNDRED:
+    roman_numeral_letter = ROMAN_NUMERAL_LETTER_C;
+    break;
+    case ARABIC_VALUE_FIVE_HUNDRED:
+    roman_numeral_letter = ROMAN_NUMERAL_LETTER_D;
+    break;
+    case ARABIC_VALUE_ONE_THOUSAND:
+    roman_numeral_letter = ROMAN_NUMERAL_LETTER_M;
+    break;
+    default:
+    break;
+  }
+  return roman_numeral_letter;
 }
