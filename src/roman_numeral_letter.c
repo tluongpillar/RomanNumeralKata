@@ -53,7 +53,7 @@ unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_lette
 
 char get_roman_numeral_letter_from_arabic_value(unsigned int arabic_value)
 {
-  char roman_numeral_letter = 'A';
+  char roman_numeral_letter = '\0';
 
   switch (arabic_value)
   {
