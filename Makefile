@@ -10,14 +10,14 @@ clean:
 	rm main
 
 clean_test:
-	rm check_tests roman_numeral.o check_suite_runner.o check_roman_numeral_letter.o check_libcheck.o
+	rm check_tests roman_numeral_letter.o check_suite_runner.o check_roman_numeral_letter.o check_libcheck.o
 
-check: roman_numeral.o check_suite_runner.o check_roman_numeral_letter.o check_libcheck.o
-	${CC} ${CFLAGS} -o check_tests roman_numeral.o check_suite_runner.o check_roman_numeral_letter.o check_libcheck.o -lcheck -lpthread -lm -lrt
+check: roman_numeral_letter.o check_suite_runner.o check_roman_numeral_letter.o check_libcheck.o
+	${CC} ${CFLAGS} -o check_tests roman_numeral_letter.o check_suite_runner.o check_roman_numeral_letter.o check_libcheck.o -lcheck -lpthread -lm -lrt
 	./check_tests
 
-roman_numeral.o:
-	${CC} ${CFLAGS} -c ${SRC}roman_numeral.c -o roman_numeral.o
+roman_numeral_letter.o:
+	${CC} ${CFLAGS} -c ${SRC}roman_numeral_letter.c -o roman_numeral_letter.o
 
 check_suite_runner.o:
 	${CC} ${CFLAGS} -c ${TEST}check_suite_runner.c -o check_suite_runner.o
