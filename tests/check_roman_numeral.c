@@ -1,5 +1,25 @@
 #include "headers/check_roman_numeral.h"
 
+START_TEST (test_get_arabic_value_from_roman_numeral__given_invalid_roman_numeral_letters__returns_ARABIC_VALUE_ZERO)
+{
+  char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
+
+  int standard_US_alphabet_letters_count = 26;
+  int invalid_roman_numeral_letters_count = strlen(invalid_roman_numerals);
+
+  ck_assert_int_eq(standard_US_alphabet_letters_count, ROMAN_NUMERAL_LETTERS_COUNT + invalid_roman_numeral_letters_count);
+
+  int index;
+  for (index = 0; index < invalid_roman_numeral_letters_count; ++index)
+  {
+    ck_assert_uint_eq(ARABIC_VALUE_ZERO, get_arabic_value_from_roman_numeral(invalid_roman_numerals[index]));
+
+    char invalid_roman_numeral_lowercase = tolower(invalid_roman_numerals[index]);
+    ck_assert_uint_eq(ARABIC_VALUE_ZERO, get_arabic_value_from_roman_numeral(invalid_roman_numeral_lowercase));
+  }
+}
+END_TEST
+
 START_TEST (test_get_arabic_value_from_roman_numeral__given_ROMAN_NUMERAL_LETTERs__returns_expected_arabic_values)
 {
   ck_assert_uint_eq(ARABIC_VALUE_ONE, get_arabic_value_from_roman_numeral(ROMAN_NUMERAL_LETTER_I));
@@ -63,6 +83,7 @@ Suite * roman_numeral_suite()
   suite = suite_create("RomanNumeral");
   tcase_core = tcase_create("Core");
 
+  tcase_add_test(tcase_core, test_get_arabic_value_from_roman_numeral__given_invalid_roman_numeral_letters__returns_ARABIC_VALUE_ZERO);
   tcase_add_test(tcase_core, test_get_arabic_value_from_roman_numeral__given_ROMAN_NUMERAL_LETTERs__returns_expected_arabic_values);
   tcase_add_test(tcase_core, test_is_roman_numeral__given_invalid_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_roman_numeral__given_valid_roman_numeral__returns_true);
