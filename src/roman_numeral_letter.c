@@ -50,3 +50,8 @@ unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_lette
 
   return arabic_value;
 }
+
+char get_roman_numeral_letter_from_arabic_value(unsigned int arabic_value)
+{
+  return 'A';
+}
