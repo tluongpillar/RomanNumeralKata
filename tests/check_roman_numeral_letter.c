@@ -1,4 +1,4 @@
-#include "headers/check_roman_numeral.h"
+#include "headers/check_roman_numeral_letter.h"
 
 static const char invalid_roman_numeral_letters[] = "ABEFGHJKNOPQRSTUWYZ";
 static const int standard_US_alphabet_letters_count = 26;
@@ -64,7 +64,7 @@ START_TEST (test_is_roman_numeral_letter__given_valid_roman_numeral_letters__ret
 }
 END_TEST
 
-Suite * roman_numeral_suite()
+Suite * roman_numeral_letter_suite()
 {
   Suite *suite;
   TCase *tcase_core;

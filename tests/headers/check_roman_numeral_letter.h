@@ -4,4 +4,4 @@
 #include <ctype.h>
 #include "../../src/headers/roman_numeral.h"
 
-Suite * roman_numeral_suite();
+Suite * roman_numeral_letter_suite();
