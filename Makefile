@@ -3,13 +3,7 @@ CFLAGS=-std=c99
 SRC=src/
 TEST=tests/
 
-main:
-	${CC} ${CFLAGS} -o main ${SRC}main.c
-
 clean:
-	rm main
-
-clean_test:
 	rm check_tests roman_numeral_letter.o check_suite_runner.o check_roman_numeral_letter.o check_libcheck.o
 
 check: roman_numeral_letter.o check_suite_runner.o check_roman_numeral_letter.o check_libcheck.o
