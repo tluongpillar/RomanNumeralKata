@@ -18,6 +18,7 @@ END_TEST
 
 START_TEST (test_get_arabic_value_from_roman_numeral_letter__given_roman_numeral_letters__returns_expected_arabic_values)
 {
+  // Checking uppercase
   ck_assert_uint_eq(ARABIC_VALUE_ONE, get_arabic_value_from_roman_numeral_letter(ROMAN_NUMERAL_LETTER_I));
   ck_assert_uint_eq(ARABIC_VALUE_FIVE, get_arabic_value_from_roman_numeral_letter(ROMAN_NUMERAL_LETTER_V));
   ck_assert_uint_eq(ARABIC_VALUE_TEN, get_arabic_value_from_roman_numeral_letter(ROMAN_NUMERAL_LETTER_X));
@@ -25,6 +26,16 @@ START_TEST (test_get_arabic_value_from_roman_numeral_letter__given_roman_numeral
   ck_assert_uint_eq(ARABIC_VALUE_ONE_HUNDRED, get_arabic_value_from_roman_numeral_letter(ROMAN_NUMERAL_LETTER_C));
   ck_assert_uint_eq(ARABIC_VALUE_FIVE_HUNDRED, get_arabic_value_from_roman_numeral_letter(ROMAN_NUMERAL_LETTER_D));
   ck_assert_uint_eq(ARABIC_VALUE_ONE_THOUSAND, get_arabic_value_from_roman_numeral_letter(ROMAN_NUMERAL_LETTER_M));
+
+  // Checking lowercase
+  ck_assert_uint_eq(ARABIC_VALUE_ONE, get_arabic_value_from_roman_numeral_letter(tolower(ROMAN_NUMERAL_LETTER_I)));
+  ck_assert_uint_eq(ARABIC_VALUE_FIVE, get_arabic_value_from_roman_numeral_letter(tolower(ROMAN_NUMERAL_LETTER_V)));
+  ck_assert_uint_eq(ARABIC_VALUE_TEN, get_arabic_value_from_roman_numeral_letter(tolower(ROMAN_NUMERAL_LETTER_X)));
+  ck_assert_uint_eq(ARABIC_VALUE_FIFTY, get_arabic_value_from_roman_numeral_letter(tolower(ROMAN_NUMERAL_LETTER_L)));
+  ck_assert_uint_eq(ARABIC_VALUE_ONE_HUNDRED, get_arabic_value_from_roman_numeral_letter(tolower(ROMAN_NUMERAL_LETTER_C)));
+  ck_assert_uint_eq(ARABIC_VALUE_FIVE_HUNDRED, get_arabic_value_from_roman_numeral_letter(tolower(ROMAN_NUMERAL_LETTER_D)));
+  ck_assert_uint_eq(ARABIC_VALUE_ONE_THOUSAND, get_arabic_value_from_roman_numeral_letter(tolower(ROMAN_NUMERAL_LETTER_M)));
+
 }
 END_TEST
 
