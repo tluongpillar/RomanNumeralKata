@@ -1,16 +1,12 @@
 #include "headers/check_roman_numeral.h"
 
+static const char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
+static const int standard_US_alphabet_letters_count = 26;
+
 START_TEST (test_get_arabic_value_from_roman_numeral__given_invalid_roman_numeral_letters__returns_ARABIC_VALUE_ZERO)
 {
-  char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
-
-  int standard_US_alphabet_letters_count = 26;
-  int invalid_roman_numeral_letters_count = strlen(invalid_roman_numerals);
-
-  ck_assert_int_eq(standard_US_alphabet_letters_count, ROMAN_NUMERAL_LETTERS_COUNT + invalid_roman_numeral_letters_count);
-
   int index;
-  for (index = 0; index < invalid_roman_numeral_letters_count; ++index)
+  for (index = 0; index < strlen(invalid_roman_numerals); ++index)
   {
     ck_assert_uint_eq(ARABIC_VALUE_ZERO, get_arabic_value_from_roman_numeral(invalid_roman_numerals[index]));
 
@@ -34,15 +30,8 @@ END_TEST
 
 START_TEST (test_is_roman_numeral__given_invalid_roman_numeral__returns_false)
 {
-  char invalid_roman_numerals[] = "ABEFGHJKNOPQRSTUWYZ";
-
-  int standard_US_alphabet_letters_count = 26;
-  int invalid_roman_numeral_letters_count = strlen(invalid_roman_numerals);
-
-  ck_assert_int_eq(standard_US_alphabet_letters_count, ROMAN_NUMERAL_LETTERS_COUNT + invalid_roman_numeral_letters_count);
-
   int index;
-  for (index = 0; index < invalid_roman_numeral_letters_count; ++index)
+  for (index = 0; index < strlen(invalid_roman_numerals); ++index)
   {
     ck_assert(is_roman_numeral(invalid_roman_numerals[index]) == false);
 
