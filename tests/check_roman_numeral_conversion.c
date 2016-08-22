@@ -14,6 +14,20 @@ START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_I_through_IX__
 }
 END_TEST
 
+START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_X_through_XC_by_X__returns_10_through_90_by_10)
+{
+  ck_assert_uint_eq(10, convert_to_arabic_value_from_roman_numeral("X"));
+  ck_assert_uint_eq(20, convert_to_arabic_value_from_roman_numeral("XX"));
+  ck_assert_uint_eq(30, convert_to_arabic_value_from_roman_numeral("XXX"));
+  ck_assert_uint_eq(40, convert_to_arabic_value_from_roman_numeral("XL"));
+  ck_assert_uint_eq(50, convert_to_arabic_value_from_roman_numeral("L"));
+  ck_assert_uint_eq(60, convert_to_arabic_value_from_roman_numeral("LX"));
+  ck_assert_uint_eq(70, convert_to_arabic_value_from_roman_numeral("LXX"));
+  ck_assert_uint_eq(80, convert_to_arabic_value_from_roman_numeral("LXXX"));
+  ck_assert_uint_eq(90, convert_to_arabic_value_from_roman_numeral("XC"));
+}
+END_TEST
+
 Suite * roman_numeral_conversion_suite()
 {
   Suite *suite;
@@ -22,6 +36,7 @@ Suite * roman_numeral_conversion_suite()
   suite = suite_create("RomanNumeralConversion");
   tcase_core = tcase_create("Core");
 
+  tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_X_through_XC_by_X__returns_10_through_90_by_10);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_I_through_IX__returns_1_through_9);
 
   suite_add_tcase(suite, tcase_core);
