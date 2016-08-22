@@ -42,6 +42,15 @@ START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_C_through_CM_b
 }
 END_TEST
 
+START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_M_through_MMM_by_M__returns_1000_through_3000_by_1000)
+{
+  ck_assert_uint_eq(1000, convert_to_arabic_value_from_roman_numeral("M"));
+  ck_assert_uint_eq(2000, convert_to_arabic_value_from_roman_numeral("MM"));
+  ck_assert_uint_eq(3000, convert_to_arabic_value_from_roman_numeral("MMM"));
+
+}
+END_TEST
+
 Suite * roman_numeral_conversion_suite()
 {
   Suite *suite;
@@ -50,6 +59,7 @@ Suite * roman_numeral_conversion_suite()
   suite = suite_create("RomanNumeralConversion");
   tcase_core = tcase_create("Core");
 
+  tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_M_through_MMM_by_M__returns_1000_through_3000_by_1000);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_C_through_CM_by_C__returns_100_through_900_by_100);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_X_through_XC_by_X__returns_10_through_90_by_10);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_I_through_IX__returns_1_through_9);
