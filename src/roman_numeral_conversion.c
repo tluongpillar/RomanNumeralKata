@@ -1,5 +1,12 @@
 #include "headers/roman_numeral_conversion.h"
 
+char * convert_to_roman_numeral_from_arabic_value(unsigned int arabic_value)
+{
+  char *roman_numeral;
+
+  return roman_numeral;
+}
+
 unsigned int convert_to_arabic_value_from_roman_numeral(char roman_numeral[])
 {
   int arabic_value = 0;
