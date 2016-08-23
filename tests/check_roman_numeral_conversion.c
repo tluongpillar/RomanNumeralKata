@@ -1,5 +1,20 @@
 #include "headers/check_roman_numeral_conversion.h"
 
+START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_3__returns_III)
+{
+  char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
+  char ** roman_numeral_pointer;
+  roman_numeral_pointer = &roman_numeral;
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 3);
+  ck_assert_str_eq("III", *roman_numeral_pointer);
+
+  free(roman_numeral);
+  roman_numeral = NULL;
+  roman_numeral_pointer = NULL;
+}
+END_TEST
+
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_2__returns_II)
 {
   char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
@@ -96,6 +111,7 @@ Suite * roman_numeral_conversion_suite()
   suite = suite_create("RomanNumeralConversion");
   tcase_core = tcase_create("Core");
 
+  tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_3__returns_III);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_2__returns_II);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1__returns_I);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_MMMCMXCIX_max_roman_numeral__returns_3999);

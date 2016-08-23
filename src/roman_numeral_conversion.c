@@ -11,7 +11,8 @@ void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned 
     strcat(*roman_numeral, "II");
     break;
     default:
-    *roman_numeral = '\0';
+    *roman_numeral = "\0";
+    break;
   }
 }
 
