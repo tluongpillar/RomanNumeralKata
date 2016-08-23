@@ -13,6 +13,8 @@
 #define ROMAN_NUMERAL_LETTER_D 'D'
 #define ROMAN_NUMERAL_LETTER_M 'M'
 
+#define MAX_ROMAN_NUMERAL "MMMCMXCIX"
+
 #define ARABIC_VALUE_ZERO 0
 #define ARABIC_VALUE_ONE 1
 #define ARABIC_VALUE_FIVE 5
@@ -21,6 +23,7 @@
 #define ARABIC_VALUE_ONE_HUNDRED 100
 #define ARABIC_VALUE_FIVE_HUNDRED 500
 #define ARABIC_VALUE_ONE_THOUSAND 1000
+#define MAX_ROMAN_NUMERAL_ARABIC_VALUE 3999
 
 bool is_roman_numeral_letter(char roman_numeral_letter);
 unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_letter);

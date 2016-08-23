@@ -75,7 +75,7 @@ END_TEST
 
 START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_MMMCMXCIX_max_roman_numeral__returns_3999)
 {
-  ck_assert_uint_eq(3999, convert_to_arabic_value_from_roman_numeral("MMMCMXCIX"));
+  ck_assert_uint_eq(MAX_ROMAN_NUMERAL_ARABIC_VALUE, convert_to_arabic_value_from_roman_numeral(MAX_ROMAN_NUMERAL));
 
 }
 END_TEST
