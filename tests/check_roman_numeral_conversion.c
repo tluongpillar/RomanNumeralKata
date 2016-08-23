@@ -2,7 +2,9 @@
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1__returns_I)
 {
-  ck_assert_uint_eq("I", convert_to_roman_numeral_from_arabic_value(1));
+  char ** roman_numeral;
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, 1);
+  ck_assert_str_eq("I", *roman_numeral);
 }
 END_TEST
 
