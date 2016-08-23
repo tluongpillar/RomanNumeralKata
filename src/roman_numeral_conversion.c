@@ -28,6 +28,9 @@ void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned 
     case 8:
     strcat(*roman_numeral, "VIII");
     break;
+    case 9:
+    strcat(*roman_numeral, "IX");
+    break;
     default:
     *roman_numeral = "\0";
     break;
