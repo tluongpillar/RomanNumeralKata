@@ -8,7 +8,7 @@ void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned 
     strcat(*roman_numeral, "I");
     break;
     case 2:
-    *roman_numeral = "II";
+    strcat(*roman_numeral, "II");
     break;
     default:
     *roman_numeral = '\0';
