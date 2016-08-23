@@ -1,9 +1,11 @@
 #include "headers/roman_numeral_conversion.h"
 
 static void convert_to_roman_numeral_from_arabic_value_1_through_9(char ** roman_numeral, unsigned int arabic_value);
+static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** roman_numeral, unsigned int arabic_value);
 
 void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned int arabic_value)
 {
+  convert_to_roman_numeral_from_arabic_value_10_through_90(roman_numeral, arabic_value);
   convert_to_roman_numeral_from_arabic_value_1_through_9(roman_numeral, arabic_value);
 }
 
@@ -75,7 +77,45 @@ static void convert_to_roman_numeral_from_arabic_value_1_through_9(char ** roman
     strcat(*roman_numeral, "IX");
     break;
     default:
-    *roman_numeral = "\0";
+    break;
+  }
+}
+
+static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** roman_numeral, unsigned int arabic_value)
+{
+  unsigned int ones_digit = arabic_value % 10;
+  unsigned int arabic_value_tens_digit = arabic_value - ones_digit;
+
+  switch (arabic_value_tens_digit % 100)
+  {
+    case 10:
+    strcat(*roman_numeral, "X");
+    break;
+    case 20:
+    strcat(*roman_numeral, "XX");
+    break;
+    case 30:
+    strcat(*roman_numeral, "XXX");
+    break;
+    case 40:
+    strcat(*roman_numeral, "XL");
+    break;
+    case 50:
+    strcat(*roman_numeral, "L");
+    break;
+    case 60:
+    strcat(*roman_numeral, "LX");
+    break;
+    case 70:
+    strcat(*roman_numeral, "LXX");
+    break;
+    case 80:
+    strcat(*roman_numeral, "LXXX");
+    break;
+    case 90:
+    strcat(*roman_numeral, "XC");
+    break;
+    default:
     break;
   }
 }
