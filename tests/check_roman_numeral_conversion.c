@@ -2,9 +2,16 @@
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_2__returns_II)
 {
-  char ** roman_numeral;
-  convert_to_roman_numeral_from_arabic_value(roman_numeral, 2);
-  ck_assert_str_eq("II", *roman_numeral);
+  char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
+  char ** roman_numeral_pointer;
+  roman_numeral_pointer = &roman_numeral;
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 2);
+  ck_assert_str_eq("II", *roman_numeral_pointer);
+
+  free(roman_numeral);
+  roman_numeral = NULL;
+  roman_numeral_pointer = NULL;
 }
 END_TEST
 
