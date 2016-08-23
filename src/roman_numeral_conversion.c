@@ -5,7 +5,7 @@ void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned 
   switch (arabic_value)
   {
     case 1:
-    *roman_numeral = "I";
+    strcat(*roman_numeral, "I");
     break;
     case 2:
     *roman_numeral = "II";
