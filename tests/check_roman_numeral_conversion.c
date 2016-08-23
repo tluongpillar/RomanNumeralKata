@@ -96,6 +96,54 @@ START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_10_through_90_
 }
 END_TEST
 
+START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_100_through_900__returns_C_through_CM)
+{
+  char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
+  char ** roman_numeral_pointer;
+  roman_numeral_pointer = &roman_numeral;
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 100);
+  ck_assert_str_eq("C", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 200);
+  ck_assert_str_eq("CC", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 300);
+  ck_assert_str_eq("CCC", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 400);
+  ck_assert_str_eq("CD", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 500);
+  ck_assert_str_eq("D", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 600);
+  ck_assert_str_eq("DC", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 700);
+  ck_assert_str_eq("DCC", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 800);
+  ck_assert_str_eq("DCCC", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 900);
+  ck_assert_str_eq("CM", *roman_numeral_pointer);
+  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+
+  free(roman_numeral);
+  roman_numeral = NULL;
+  roman_numeral_pointer = NULL;
+}
+END_TEST
+
 START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_I_through_IX__returns_1_through_9)
 {
   ck_assert_uint_eq(1, convert_to_arabic_value_from_roman_numeral("I"));
@@ -162,6 +210,7 @@ Suite * roman_numeral_conversion_suite()
   suite = suite_create("RomanNumeralConversion");
   tcase_core = tcase_create("Core");
 
+  tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_100_through_900__returns_C_through_CM);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_10_through_90__returns_X_through_XC);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1_through_9__returns_I_through_IX);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_MMMCMXCIX_max_roman_numeral__returns_3999);
