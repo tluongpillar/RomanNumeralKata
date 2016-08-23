@@ -164,22 +164,17 @@ static void convert_to_roman_numeral_from_arabic_value_100_through_900(char ** r
 
 static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(char ** roman_numeral, unsigned int arabic_value)
 {
-  unsigned int ones_digit = arabic_value % 10;
-  unsigned int arabic_value_tens_digit = arabic_value - ones_digit;
-  unsigned int tens_digit = arabic_value_tens_digit % 100;
-  unsigned int arabic_value_hundreds_digit = arabic_value_tens_digit - tens_digit;
-  unsigned int hundreds_digit = arabic_value_hundreds_digit % 1000;
-  unsigned int arabic_value_thousands_digit = arabic_value_hundreds_digit - hundreds_digit;
+  unsigned int arabic_value_thousands_digit = arabic_value / 1000;
 
-  switch (arabic_value_thousands_digit % 4000)
+  switch (arabic_value_thousands_digit % 4)
   {
-    case 1000:
+    case 1:
     strcat(*roman_numeral, "M");
     break;
-    case 2000:
+    case 2:
     strcat(*roman_numeral, "MM");
     break;
-    case 3000:
+    case 3:
     strcat(*roman_numeral, "MMM");
     break;
     default:
