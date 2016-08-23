@@ -10,6 +10,9 @@ void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned 
     case 2:
     strcat(*roman_numeral, "II");
     break;
+    case 3:
+    strcat(*roman_numeral, "III");
+    break;
     default:
     *roman_numeral = "\0";
     break;
