@@ -10,9 +10,15 @@ END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1__returns_I)
 {
-  char ** roman_numeral;
-  convert_to_roman_numeral_from_arabic_value(roman_numeral, 1);
-  ck_assert_str_eq("I", *roman_numeral);
+  char * roman_numeral = (char*)malloc(10 * sizeof(char));
+  char ** roman_numeral_pointer;
+  roman_numeral_pointer = &roman_numeral;
+
+  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 1);
+  ck_assert_str_eq("I", *roman_numeral_pointer);
+
+  free(roman_numeral);
+  roman_numeral = NULL;
 }
 END_TEST
 
