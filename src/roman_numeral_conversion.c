@@ -88,36 +88,35 @@ static void convert_to_roman_numeral_from_arabic_value_1_through_9(char ** roman
 
 static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** roman_numeral, unsigned int arabic_value)
 {
-  unsigned int ones_digit = arabic_value % 10;
-  unsigned int arabic_value_tens_digit = arabic_value - ones_digit;
+  unsigned int arabic_value_tens_digit = arabic_value / 10;
 
-  switch (arabic_value_tens_digit % 100)
+  switch (arabic_value_tens_digit % 10)
   {
-    case 10:
+    case 1:
     strcat(*roman_numeral, "X");
     break;
-    case 20:
+    case 2:
     strcat(*roman_numeral, "XX");
     break;
-    case 30:
+    case 3:
     strcat(*roman_numeral, "XXX");
     break;
-    case 40:
+    case 4:
     strcat(*roman_numeral, "XL");
     break;
-    case 50:
+    case 5:
     strcat(*roman_numeral, "L");
     break;
-    case 60:
+    case 6:
     strcat(*roman_numeral, "LX");
     break;
-    case 70:
+    case 7:
     strcat(*roman_numeral, "LXX");
     break;
-    case 80:
+    case 8:
     strcat(*roman_numeral, "LXXX");
     break;
-    case 90:
+    case 9:
     strcat(*roman_numeral, "XC");
     break;
     default:
