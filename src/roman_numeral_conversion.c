@@ -126,39 +126,35 @@ static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** rom
 
 static void convert_to_roman_numeral_from_arabic_value_100_through_900(char ** roman_numeral, unsigned int arabic_value)
 {
-  unsigned int ones_digit = arabic_value % 10;
-  unsigned int arabic_value_tens_digit = arabic_value - ones_digit;
-  unsigned int tens_digit = arabic_value_tens_digit % 100;
-  unsigned int arabic_value_hundreds_digit = arabic_value_tens_digit - tens_digit;
+  unsigned int arabic_value_hundreds_digit = arabic_value / 100;
 
-
-  switch (arabic_value_hundreds_digit % 1000)
+  switch (arabic_value_hundreds_digit % 10)
   {
-    case 100:
+    case 1:
     strcat(*roman_numeral, "C");
     break;
-    case 200:
+    case 2:
     strcat(*roman_numeral, "CC");
     break;
-    case 300:
+    case 3:
     strcat(*roman_numeral, "CCC");
     break;
-    case 400:
+    case 4:
     strcat(*roman_numeral, "CD");
     break;
-    case 500:
+    case 5:
     strcat(*roman_numeral, "D");
     break;
-    case 600:
+    case 6:
     strcat(*roman_numeral, "DC");
     break;
-    case 700:
+    case 7:
     strcat(*roman_numeral, "DCC");
     break;
-    case 800:
+    case 8:
     strcat(*roman_numeral, "DCCC");
     break;
-    case 900:
+    case 9:
     strcat(*roman_numeral, "CM");
     break;
     default:
