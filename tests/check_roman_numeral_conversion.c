@@ -10,7 +10,7 @@ END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1__returns_I)
 {
-  char * roman_numeral = (char*)malloc(10 * sizeof(char));
+  char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
   char ** roman_numeral_pointer;
   roman_numeral_pointer = &roman_numeral;
 
@@ -19,6 +19,7 @@ START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1__returns_I)
 
   free(roman_numeral);
   roman_numeral = NULL;
+  roman_numeral_pointer = NULL;
 }
 END_TEST
 
