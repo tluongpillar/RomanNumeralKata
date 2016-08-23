@@ -22,6 +22,9 @@ void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned 
     case 6:
     strcat(*roman_numeral, "VI");
     break;
+    case 7:
+    strcat(*roman_numeral, "VII");
+    break;
     default:
     *roman_numeral = "\0";
     break;
