@@ -1,6 +1,6 @@
 #include "headers/check_roman_numeral_operation.h"
 
-START_TEST(test_add_two_roman_numerals__given_I_add_I_to_IX__returns_II_to_X)
+START_TEST(test_add_two_roman_numerals__given_I_add_I_to_MMMCMXCVIII__returns_II_to_MMMCMXCIX)
 {
   char * expected_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
   char ** expected_result_pointer;
@@ -20,7 +20,8 @@ START_TEST(test_add_two_roman_numerals__given_I_add_I_to_IX__returns_II_to_X)
   rhs_roman_numeral_pointer = &rhs_roman_numeral;
 
   unsigned int rhs_arabic_value;
-  for (rhs_arabic_value = 1; rhs_arabic_value < 10; ++rhs_arabic_value)
+  unsigned int rhs_arabic_value_upper_limit = MAX_ROMAN_NUMERAL_ARABIC_VALUE - lhs_arabic_value;
+  for (rhs_arabic_value = 1; rhs_arabic_value <= rhs_arabic_value_upper_limit; ++rhs_arabic_value)
   {
     expected_result_arabic_value = lhs_arabic_value + rhs_arabic_value;
 
@@ -60,7 +61,7 @@ Suite * roman_numeral_operation_suite()
   suite = suite_create("RomanNumeralOperation");
   tcase_core = tcase_create("Core");
 
-  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_I_add_I_to_IX__returns_II_to_X);
+  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_I_add_I_to_MMMCMXCVIII__returns_II_to_MMMCMXCIX);
 
   suite_add_tcase(suite, tcase_core);
 
