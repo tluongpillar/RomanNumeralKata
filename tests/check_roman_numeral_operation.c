@@ -28,13 +28,13 @@ START_TEST(test_add_two_roman_numerals__given_I_add_I_to_IX__returns_II_to_X)
 
     convert_to_roman_numeral_from_arabic_value(rhs_roman_numeral_pointer, rhs_arabic_value);
 
-    add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, *rhs_roman_numeral_pointer);
+    add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
-    ck_assert_str_eq(*expected_result_pointer, *actual_result_pointer);
+    ck_assert_str_eq(expected_result, actual_result);
 
-    memset(*rhs_roman_numeral_pointer, 0, strlen(*rhs_roman_numeral_pointer));
-    memset(*expected_result_pointer, 0, strlen(*expected_result_pointer));
-    memset(*actual_result_pointer, 0, strlen(*actual_result_pointer));
+    memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
+    memset(expected_result, 0, strlen(expected_result));
+    memset(actual_result, 0, strlen(actual_result));
   }
 
   free(rhs_roman_numeral);
