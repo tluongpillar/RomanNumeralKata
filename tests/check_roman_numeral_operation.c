@@ -18,6 +18,7 @@ START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_cor
   char ** rhs_roman_numeral_pointer;
   rhs_roman_numeral_pointer = &rhs_roman_numeral;
 
+  bool did_add_successfully = false;
   unsigned int expected_result_arabic_value;
   unsigned int rhs_arabic_value;
   unsigned int rhs_arabic_value_upper_limit;
@@ -35,11 +36,14 @@ START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_cor
       convert_to_roman_numeral_from_arabic_value(lhs_roman_numeral_pointer, lhs_arabic_value);
       convert_to_roman_numeral_from_arabic_value(rhs_roman_numeral_pointer, rhs_arabic_value);
 
-      add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
+      did_add_successfully = add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
+      ck_assert(did_add_successfully);
       ck_assert_str_eq(expected_result, actual_result);
 
-      printf("%s + %s = %s\n", lhs_roman_numeral, rhs_roman_numeral, actual_result);
+      printf("success:%d %s + %s = %s\n", did_add_successfully, lhs_roman_numeral, rhs_roman_numeral, actual_result);
+
+      did_add_successfully = false;
       memset(lhs_roman_numeral, 0, strlen(lhs_roman_numeral));
       memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
       memset(expected_result, 0, strlen(expected_result));
