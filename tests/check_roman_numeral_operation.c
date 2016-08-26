@@ -1,5 +1,23 @@
 #include "headers/check_roman_numeral_operation.h"
 
+START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false)
+{
+  char * lhs_roman_numeral = MAX_ROMAN_NUMERAL;
+  char * rhs_roman_numeral = "I";
+
+  char * expected_result = "\0";
+
+  char * actual_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
+  char ** actual_result_pointer;
+  actual_result_pointer = &actual_result;
+
+  bool did_add_successfully = add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
+
+  ck_assert(false == did_add_successfully);
+  ck_assert_str_eq(expected_result, actual_result);
+}
+END_TEST
+
 START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum)
 {
   char * expected_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
@@ -38,10 +56,10 @@ START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_cor
 
       did_add_successfully = add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
+      printf("success:%d %s + %s = %s\n", did_add_successfully, lhs_roman_numeral, rhs_roman_numeral, actual_result);
+
       ck_assert(did_add_successfully);
       ck_assert_str_eq(expected_result, actual_result);
-
-      printf("success:%d %s + %s = %s\n", did_add_successfully, lhs_roman_numeral, rhs_roman_numeral, actual_result);
 
       did_add_successfully = false;
       memset(lhs_roman_numeral, 0, strlen(lhs_roman_numeral));
@@ -99,6 +117,7 @@ Suite * roman_numeral_operation_suite()
   tcase_core = tcase_create("Core");
 
   tcase_set_timeout(tcase_core, 3600);
+  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_II_minus_I__returns_I);
 
