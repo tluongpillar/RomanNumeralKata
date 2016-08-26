@@ -98,8 +98,31 @@ START_TEST(test_subtract_two_roman_numerals__given_II_minus_I__returns_I)
   char ** actual_result_pointer;
   actual_result_pointer = &actual_result;
 
-  subtract_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
+  bool did_subtract_successfully = subtract_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
+  ck_assert(true == did_subtract_successfully);
+  ck_assert_str_eq(expected_result, actual_result);
+
+  free(actual_result);
+  actual_result = NULL;
+  actual_result_pointer = NULL;
+}
+END_TEST
+
+START_TEST(test_subtract_two_roman_numerals__given_I_minus_II__returns_false)
+{
+  char * lhs_roman_numeral = "I";
+  char * rhs_roman_numeral = "II";
+
+  char * expected_result = "\0";
+
+  char * actual_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
+  char ** actual_result_pointer;
+  actual_result_pointer = &actual_result;
+
+  bool did_subtract_successfully = subtract_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
+
+  ck_assert(false == did_subtract_successfully);
   ck_assert_str_eq(expected_result, actual_result);
 
   free(actual_result);
@@ -120,6 +143,7 @@ Suite * roman_numeral_operation_suite()
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_II_minus_I__returns_I);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_false);
 
   suite_add_tcase(suite, tcase_core);
 
