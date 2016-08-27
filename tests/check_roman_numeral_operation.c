@@ -1,6 +1,6 @@
 #include "headers/check_roman_numeral_operation.h"
 
-START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false)
+START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string_with_failure)
 {
   char * lhs_roman_numeral = MAX_ROMAN_NUMERAL;
   char * rhs_roman_numeral = "I";
@@ -18,7 +18,7 @@ START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_
 }
 END_TEST
 
-START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum)
+START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum_with_success)
 {
   char * expected_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
   char ** expected_result_pointer;
@@ -87,7 +87,7 @@ START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_cor
 }
 END_TEST
 
-START_TEST(test_subtract_two_roman_numerals__given_II_minus_I__returns_I)
+START_TEST(test_subtract_two_roman_numerals__given_II_minus_I__returns_I_with_success)
 {
   char * lhs_roman_numeral = "II";
   char * rhs_roman_numeral = "I";
@@ -109,7 +109,7 @@ START_TEST(test_subtract_two_roman_numerals__given_II_minus_I__returns_I)
 }
 END_TEST
 
-START_TEST(test_subtract_two_roman_numerals__given_I_minus_II__returns_false)
+START_TEST(test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string_with_failure)
 {
   char * lhs_roman_numeral = "I";
   char * rhs_roman_numeral = "II";
@@ -131,7 +131,7 @@ START_TEST(test_subtract_two_roman_numerals__given_I_minus_II__returns_false)
 }
 END_TEST
 
-START_TEST(test_subtract_two_roman_numerals__given_I_minus_I__returns_empty_string)
+START_TEST(test_subtract_two_roman_numerals__given_I_minus_I__returns_empty_string_with_success)
 {
   char * lhs_roman_numeral = "I";
   char * rhs_roman_numeral = "I";
@@ -162,11 +162,11 @@ Suite * roman_numeral_operation_suite()
   tcase_core = tcase_create("Core");
 
   tcase_set_timeout(tcase_core, 3600);
-  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false);
-  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum);
-  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_II_minus_I__returns_I);
-  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_false);
-  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_I__returns_empty_string);
+  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string_with_failure);
+  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum_with_success);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_II_minus_I__returns_I_with_success);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string_with_failure);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_I__returns_empty_string_with_success);
 
   suite_add_tcase(suite, tcase_core);
 
