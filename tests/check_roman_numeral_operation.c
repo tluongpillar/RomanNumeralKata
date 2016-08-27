@@ -175,6 +175,12 @@ START_TEST(test_subtract_two_roman_numerals__given_all_valid_combination_inputs_
 }
 END_TEST
 
+START_TEST(test_is_valid_roman_numeral__given_MAX_ROMAN_NUMERAL__returns_true)
+{
+  ck_assert(true == is_valid_roman_numeral(MAX_ROMAN_NUMERAL));
+}
+END_TEST
+
 Suite * roman_numeral_operation_suite()
 {
   Suite *suite;
@@ -184,6 +190,7 @@ Suite * roman_numeral_operation_suite()
   tcase_core = tcase_create("Core");
 
   tcase_set_timeout(tcase_core, 3600);
+  tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_MAX_ROMAN_NUMERAL__returns_true);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string_with_failure);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string_with_failure);
