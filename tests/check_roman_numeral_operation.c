@@ -18,7 +18,7 @@ START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_
 }
 END_TEST
 
-START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum_with_success)
+START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success)
 {
   char * expected_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
   char ** expected_result_pointer;
@@ -41,11 +41,11 @@ START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_cor
   unsigned int rhs_arabic_value;
   unsigned int rhs_arabic_value_upper_limit;
   unsigned int lhs_arabic_value;
-  unsigned int lhs_arabic_value_upper_limit = MAX_ROMAN_NUMERAL_ARABIC_VALUE - 1;
-  for (lhs_arabic_value = 1; lhs_arabic_value <= lhs_arabic_value_upper_limit; ++lhs_arabic_value)
+  unsigned int lhs_arabic_value_upper_limit = MAX_ROMAN_NUMERAL_ARABIC_VALUE;
+  for (lhs_arabic_value = 0; lhs_arabic_value <= lhs_arabic_value_upper_limit; ++lhs_arabic_value)
   {
     rhs_arabic_value_upper_limit = MAX_ROMAN_NUMERAL_ARABIC_VALUE - lhs_arabic_value;
-    for (rhs_arabic_value = 1; rhs_arabic_value <= rhs_arabic_value_upper_limit; ++rhs_arabic_value)
+    for (rhs_arabic_value = 0; rhs_arabic_value <= rhs_arabic_value_upper_limit; ++rhs_arabic_value)
     {
       expected_result_arabic_value = lhs_arabic_value + rhs_arabic_value;
 
@@ -179,7 +179,7 @@ Suite * roman_numeral_operation_suite()
 
   tcase_set_timeout(tcase_core, 3600);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string_with_failure);
-  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_all_input_combination__returns_correct_sum_with_success);
+  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string_with_failure);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success);
 
