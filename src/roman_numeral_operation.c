@@ -34,5 +34,14 @@ bool subtract_two_roman_numerals(char ** result, char * lhs, char * rhs)
 
 bool is_valid_roman_numeral(char * roman_numeral)
 {
-  return false;
+  int index;
+  for (index = 0; index < strlen(roman_numeral); ++index)
+  {
+    if (!is_roman_numeral_letter(roman_numeral[index]))
+    {
+      return false;
+    }
+  }
+
+  return true;
 }
