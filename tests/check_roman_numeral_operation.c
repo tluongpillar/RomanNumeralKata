@@ -15,6 +15,10 @@ START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_
 
   ck_assert(false == did_add_successfully);
   ck_assert_str_eq(expected_result, actual_result);
+
+  free(actual_result);
+  actual_result = NULL;
+  actual_result_pointer = NULL;
 }
 END_TEST
 
