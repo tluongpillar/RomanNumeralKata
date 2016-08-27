@@ -187,6 +187,12 @@ START_TEST(test_is_valid_roman_numeral__given_invalid_roman_numeral__returns_fal
 }
 END_TEST
 
+START_TEST(test_is_valid_roman_numeral__given_invalid_out_of_order_roman_numeral__returns_false)
+{
+  ck_assert(false == is_valid_roman_numeral("MMMVMXCIX"));
+}
+END_TEST
+
 START_TEST(test_is_valid_roman_numeral__given_empty_string__returns_true)
 {
   ck_assert(true == is_valid_roman_numeral("\0"));
@@ -203,6 +209,7 @@ Suite * roman_numeral_operation_suite()
 
   tcase_set_timeout(tcase_core, 3600);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_empty_string__returns_true);
+  tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_invalid_out_of_order_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_invalid_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_MAX_ROMAN_NUMERAL__returns_true);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string_with_failure);
