@@ -60,7 +60,7 @@ START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__retur
 
       did_add_successfully = add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
-      ck_assert(did_add_successfully);
+      ck_assert(true == did_add_successfully);
       ck_assert_str_eq(expected_result, actual_result);
 
       did_add_successfully = false;
@@ -147,6 +147,8 @@ START_TEST(test_subtract_two_roman_numerals__given_all_valid_combination_inputs_
 
       ck_assert(true == did_subtract_successfully);
       ck_assert_str_eq(expected_result, actual_result);
+
+      did_subtract_successfully = false;
 
       memset(lhs_roman_numeral, 0, strlen(lhs_roman_numeral));
       memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
