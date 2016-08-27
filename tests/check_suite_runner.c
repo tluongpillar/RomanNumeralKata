@@ -6,10 +6,9 @@ int main()
   Suite *suite;
   SRunner *srunner;
 
-  suite = libcheck_suite();
+  suite = roman_numeral_letter_suite();
   srunner = srunner_create(suite);
 
-  srunner_add_suite(srunner, roman_numeral_letter_suite());
   srunner_add_suite(srunner, roman_numeral_conversion_suite());
   srunner_add_suite(srunner, roman_numeral_operation_suite());
 

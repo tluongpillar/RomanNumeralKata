@@ -4,10 +4,10 @@ SRC=src/
 TEST=tests/
 
 clean:
-	rm check_tests roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o check_libcheck.o
+	rm check_tests roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o
 
-check: roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o check_libcheck.o
-	${CC} ${CFLAGS} -o check_tests roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o check_libcheck.o -lcheck -lpthread -lm -lrt
+check: roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o
+	${CC} ${CFLAGS} -o check_tests roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o -lcheck -lpthread -lm -lrt
 	./check_tests
 
 roman_numeral_operation.o:
@@ -30,6 +30,3 @@ check_roman_numeral_conversion.o:
 
 check_roman_numeral_letter.o:
 	${CC} ${CFLAGS} -c ${TEST}check_roman_numeral_letter.c -o check_roman_numeral_letter.o
-
-check_libcheck.o:
-	${CC} ${CFLAGS} -c ${TEST}check_libcheck.c -o check_libcheck.o
