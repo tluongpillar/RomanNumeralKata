@@ -56,8 +56,6 @@ START_TEST(test_add_two_roman_numerals__given_all_input_combination__returns_cor
 
       did_add_successfully = add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
-      //printf("success:%d %s + %s = %s\n", did_add_successfully, lhs_roman_numeral, rhs_roman_numeral, actual_result);
-
       ck_assert(did_add_successfully);
       ck_assert_str_eq(expected_result, actual_result);
 
@@ -153,10 +151,11 @@ START_TEST(test_subtract_two_roman_numerals__given_I_minus_I__returns_empty_stri
 }
 END_TEST
 
-START_TEST(test_subtract_two_roman_numerals__given_MAX_ROMAN_NUMERAL_minus_MAX_ROMAN_NUMERAL_through_zero___returns_correct_result_with_success)
+START_TEST(test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success)
 {
-  char * lhs_roman_numeral = MAX_ROMAN_NUMERAL;
-  unsigned int lhs_arabic_value = convert_to_arabic_value_from_roman_numeral(lhs_roman_numeral);
+  char * lhs_roman_numeral = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
+  char ** lhs_roman_numeral_pointer;
+  lhs_roman_numeral_pointer = &lhs_roman_numeral;
 
   char * rhs_roman_numeral = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
   char ** rhs_roman_numeral_pointer;
@@ -172,24 +171,28 @@ START_TEST(test_subtract_two_roman_numerals__given_MAX_ROMAN_NUMERAL_minus_MAX_R
 
   bool did_subtract_successfully = false;
   unsigned int expected_result_arabic_value;
+  unsigned int lhs_arabic_value;
   unsigned int rhs_arabic_value;
-  for (rhs_arabic_value = MAX_ROMAN_NUMERAL_ARABIC_VALUE; rhs_arabic_value >= 0 && rhs_arabic_value <= MAX_ROMAN_NUMERAL_ARABIC_VALUE; --rhs_arabic_value)
+  for (lhs_arabic_value = MAX_ROMAN_NUMERAL_ARABIC_VALUE; lhs_arabic_value >= 0 && lhs_arabic_value <= MAX_ROMAN_NUMERAL_ARABIC_VALUE; --lhs_arabic_value)
   {
-    expected_result_arabic_value = lhs_arabic_value - rhs_arabic_value;
+    for (rhs_arabic_value = lhs_arabic_value; rhs_arabic_value >= 0 && rhs_arabic_value <= lhs_arabic_value; --rhs_arabic_value)
+    {
+      expected_result_arabic_value = lhs_arabic_value - rhs_arabic_value;
+      convert_to_roman_numeral_from_arabic_value(expected_result_pointer, expected_result_arabic_value);
 
-    convert_to_roman_numeral_from_arabic_value(expected_result_pointer, expected_result_arabic_value);
-    convert_to_roman_numeral_from_arabic_value(rhs_roman_numeral_pointer, rhs_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(lhs_roman_numeral_pointer, lhs_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(rhs_roman_numeral_pointer, rhs_arabic_value);
 
-    did_subtract_successfully = subtract_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
+      did_subtract_successfully = subtract_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
-    //printf("success:%d %s - %s = %s\n", did_subtract_successfully, lhs_roman_numeral, rhs_roman_numeral, actual_result);
+      ck_assert(true == did_subtract_successfully);
+      ck_assert_str_eq(expected_result, actual_result);
 
-    ck_assert(true == did_subtract_successfully);
-    ck_assert_str_eq(expected_result, actual_result);
-
-    memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
-    memset(expected_result, 0, strlen(expected_result));
-    memset(actual_result, 0, strlen(actual_result));
+      memset(lhs_roman_numeral, 0, strlen(lhs_roman_numeral));
+      memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
+      memset(expected_result, 0, strlen(expected_result));
+      memset(actual_result, 0, strlen(actual_result));
+    }
   }
 
   free(actual_result);
@@ -199,6 +202,10 @@ START_TEST(test_subtract_two_roman_numerals__given_MAX_ROMAN_NUMERAL_minus_MAX_R
   free(expected_result);
   expected_result = NULL;
   expected_result_pointer = NULL;
+
+  free(lhs_roman_numeral);
+  lhs_roman_numeral = NULL;
+  lhs_roman_numeral_pointer = NULL;
 
   free(rhs_roman_numeral);
   rhs_roman_numeral = NULL;
@@ -220,7 +227,7 @@ Suite * roman_numeral_operation_suite()
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_II_minus_I__returns_I_with_success);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string_with_failure);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_I__returns_empty_string_with_success);
-  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_MAX_ROMAN_NUMERAL_minus_MAX_ROMAN_NUMERAL_through_zero___returns_correct_result_with_success);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success);
 
   suite_add_tcase(suite, tcase_core);
 
