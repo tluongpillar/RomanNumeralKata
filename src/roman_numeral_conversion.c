@@ -40,7 +40,8 @@ unsigned int convert_to_arabic_value_from_roman_numeral(char * roman_numeral)
       if (next_roman_numeral_letter_arabic_value > current_roman_numeral_letter_arabic_value)
       {
         arabic_value -= current_roman_numeral_letter_arabic_value;
-      } else
+      }
+      else
       {
         arabic_value += current_roman_numeral_letter_arabic_value;
       }

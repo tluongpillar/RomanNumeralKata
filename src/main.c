@@ -107,7 +107,8 @@ static void request_user_for_operation_input(char ** operation)
     if (strcmp("+", *operation) == 0 || strcmp("-", *operation) == 0)
     {
       verifying_operation = false;
-    } else
+    }
+    else
     {
       printf("Invalid operation. Please try again (+/-): ");
       memset(*operation, 0, strlen(*operation));

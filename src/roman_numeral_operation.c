@@ -10,7 +10,8 @@ bool add_two_roman_numerals(char ** result, char * lhs, char * rhs){
   {
     convert_to_roman_numeral_from_arabic_value(result, sum_arabic_value);
     return true;
-  } else
+  }
+  else
   {
     return false;
   }
@@ -26,7 +27,8 @@ bool subtract_two_roman_numerals(char ** result, char * lhs, char * rhs)
     unsigned int result_arabic_value = lhs_arabic_value - rhs_arabic_value;
     convert_to_roman_numeral_from_arabic_value(result, result_arabic_value);
     return true;
-  } else
+  }
+  else
   {
     return false;
   }
