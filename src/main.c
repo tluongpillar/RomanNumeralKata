@@ -22,6 +22,12 @@ int main()
   char ** operation_pointer;
   operation_pointer = &operation;
 
+  char * calculation_result = calloc(20, sizeof(char));
+  char ** calculation_result_pointer;
+  calculation_result_pointer = &calculation_result;
+
+  bool did_perform_calculation_successfully = false;
+
   while (continue_running)
   {
     printf("Please enter the first roman numeral: ");
@@ -33,7 +39,18 @@ int main()
     printf("Please enter the desired operation (+/-): ");
     request_user_for_operation_input(operation_pointer);
 
-    printf("%s %s %s = TBD\n", first_roman_numeral, operation, second_roman_numeral);
+    did_perform_calculation_successfully = perform_operation_with_roman_numerals(calculation_result_pointer, first_roman_numeral, second_roman_numeral, operation);
+    if (did_perform_calculation_successfully)
+    {
+      printf("\n%s %s %s = %s\n\n", first_roman_numeral, operation, second_roman_numeral, calculation_result);
+    }
+    else
+    {
+      printf("\nInvalid result. Result was not in the range of valid roman numerals.\n");
+      printf("%s %s %s = ???\n\n", first_roman_numeral, operation, second_roman_numeral);
+    }
+
+    did_perform_calculation_successfully = false;
 
     printf("Would you like to perform another calculation? (Y/N): ");
     continue_running = request_user_to_continue();
@@ -41,6 +58,7 @@ int main()
     memset(first_roman_numeral, 0, strlen(first_roman_numeral));
     memset(second_roman_numeral, 0, strlen(second_roman_numeral));
     memset(operation, 0, strlen(operation));
+    memset(calculation_result, 0, strlen(calculation_result));
   }
 
   free(first_roman_numeral);
@@ -52,6 +70,9 @@ int main()
   free(operation);
   operation = NULL;
   operation_pointer = NULL;
+  free(calculation_result);
+  calculation_result = NULL;
+  calculation_result_pointer = NULL;
 
   return 0;
 }
