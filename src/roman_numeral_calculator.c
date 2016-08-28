@@ -7,6 +7,7 @@ int main()
   bool perform_another_calculation = true;
   bool verifying_operation = true;
   bool verifying_first_roman_numeral = true;
+  bool verifying_second_roman_numeral = true;
 
   char * user_input = calloc(20, sizeof(char));
   char * first_roman_numeral = calloc(20, sizeof(char));
@@ -33,11 +34,22 @@ int main()
       memset(user_input, 0, strlen(user_input));
     }
 
+    while (verifying_second_roman_numeral)
+    {
+      printf("Please enter the second roman_numeral: ");
+      scanf("%s", user_input);
 
-    printf("Please enter the second roman_numeral: ");
-    scanf("%s", user_input);
-    strcpy(second_roman_numeral, user_input);
-    memset(user_input, 0, strlen(user_input));
+      if (is_valid_roman_numeral(user_input))
+      {
+        strcpy(second_roman_numeral, user_input);
+        verifying_second_roman_numeral = false;
+      } else
+      {
+        printf("You have entered an invalid roman numeral.\n");
+      }
+
+      memset(user_input, 0, strlen(user_input));
+    }
 
     while (verifying_operation)
     {
@@ -67,6 +79,7 @@ int main()
 
     verifying_operation = true;
     verifying_first_roman_numeral = true;
+    verifying_second_roman_numeral = true;
 
     memset(user_input, 0, strlen(user_input));
     memset(first_roman_numeral, 0, strlen(first_roman_numeral));
