@@ -2,14 +2,14 @@
 
 static void request_user_for_roman_numeral_input(char ** roman_numeral);
 static void request_user_for_operation_input(char ** operation);
+static bool request_user_to_continue();
 
 int main()
 {
   printf("Welcome to the Roman Numeral Calculator!\n");
 
-  bool perform_another_calculation = true;
+  bool continue_running = true;
 
-  char * user_input = calloc(20, sizeof(char));
   char * first_roman_numeral = calloc(20, sizeof(char));
   char ** first_roman_numeral_pointer;
   first_roman_numeral_pointer = &first_roman_numeral;
@@ -22,7 +22,7 @@ int main()
   char ** operation_pointer;
   operation_pointer = &operation;
 
-  while (perform_another_calculation)
+  while (continue_running)
   {
     printf("Please enter the first roman numeral: ");
     request_user_for_roman_numeral_input(first_roman_numeral_pointer);
@@ -36,20 +36,13 @@ int main()
     printf("%s %s %s = TBD\n", first_roman_numeral, operation, second_roman_numeral);
 
     printf("Would you like to perform another calculation? (Y/N): ");
-    scanf("\n%s", user_input);
-    if (strcmp("N", user_input) == 0)
-    {
-      perform_another_calculation = false;
-    }
+    continue_running = request_user_to_continue();
 
-    memset(user_input, 0, strlen(user_input));
     memset(first_roman_numeral, 0, strlen(first_roman_numeral));
     memset(second_roman_numeral, 0, strlen(second_roman_numeral));
     memset(operation, 0, strlen(operation));
   }
 
-  free(user_input);
-  user_input = NULL;
   free(first_roman_numeral);
   first_roman_numeral = NULL;
   first_roman_numeral_pointer = NULL;
@@ -99,4 +92,36 @@ static void request_user_for_operation_input(char ** operation)
       memset(*operation, 0, strlen(*operation));
     }
   }
+}
+
+static bool request_user_to_continue()
+{
+  bool continue_running;
+  char * user_input = calloc(20, sizeof(char));
+
+  bool verifying_input = true;
+  while (verifying_input)
+  {
+      scanf("%s", user_input);
+      switch (user_input[0])
+      {
+        case 'N':
+        continue_running = false;
+        verifying_input = false;
+        break;
+        case 'Y':
+        continue_running = true;
+        verifying_input = false;
+        break;
+        default:
+        printf("Invalid selection. Please try again (Y/N): ");
+        memset(user_input, 0, strlen(user_input));
+        break;
+      }
+  }
+
+  free(user_input);
+  user_input = NULL;
+
+  return continue_running;
 }
