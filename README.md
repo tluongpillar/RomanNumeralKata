@@ -2,19 +2,21 @@
 
 ## Usage
 ### Build and run Docker
+Clone git repo to working dir path
 ```
 docker build -t falconkata [working dir path]
 docker run --rm -it -v [working dir path on host]:[target path on container] --name falconkata_container falconkata
 ```
 
-### Run all check tests
-cd to working directory on container
+### Running the tests
+cd to working dir on container
 ```
 make clean
 make check
 ```
 
-### Run Roman Numeral Calculator
+### Running the calculator
+cd to working dir on container
 ```
 make clean
 make run
