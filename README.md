@@ -2,17 +2,23 @@
 
 ## Usage
 ### Build and run Docker
-> docker build -t falconkata [working dir path]
-> docker run --rm -it -v [working dir path on host]:[target path on container] --name falconkata_container falconkata
+```
+docker build -t falconkata [working dir path]
+docker run --rm -it -v [working dir path on host]:[target path on container] --name falconkata_container falconkata
+```
 
 ### Run all check tests
 cd to working directory on container
-> make clean
-> make check
+```
+make clean
+make check
+```
 
 ### Run Roman Numeral Calculator
-> make clean
-> make run
+```
+make clean
+make run
+```
 
 ## Roman Numeral Calculator
 For this programming exercise, you will be creating a library which will allow the addition and subtraction of Roman numerals.
