@@ -10,19 +10,19 @@ int main()
 
   bool continue_running = true;
 
-  char * first_roman_numeral = calloc(20, sizeof(char));
+  char * first_roman_numeral = calloc(USER_INPUT_LENGTH, sizeof(char));
   char ** first_roman_numeral_pointer;
   first_roman_numeral_pointer = &first_roman_numeral;
 
-  char * second_roman_numeral = calloc(20, sizeof(char));
+  char * second_roman_numeral = calloc(USER_INPUT_LENGTH, sizeof(char));
   char ** second_roman_numeral_pointer;
   second_roman_numeral_pointer = &second_roman_numeral;
 
-  char * operation = calloc(20, sizeof(char));
+  char * operation = calloc(USER_INPUT_LENGTH, sizeof(char));
   char ** operation_pointer;
   operation_pointer = &operation;
 
-  char * calculation_result = calloc(20, sizeof(char));
+  char * calculation_result = calloc(strlen(MAX_ROMAN_NUMERAL) + 1, sizeof(char));
   char ** calculation_result_pointer;
   calculation_result_pointer = &calculation_result;
 
@@ -119,12 +119,13 @@ static void request_user_for_operation_input(char ** operation)
 static bool request_user_to_continue()
 {
   bool continue_running;
-  char * user_input = calloc(20, sizeof(char));
+  char * user_input = calloc(USER_INPUT_LENGTH, sizeof(char));
 
   bool verifying_input = true;
   while (verifying_input)
   {
       scanf("%s", user_input);
+
       switch (user_input[0])
       {
         case 'N':
