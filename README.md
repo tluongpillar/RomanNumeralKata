@@ -5,19 +5,19 @@
 Clone git repo to working dir path
 ```
 docker build -t falconkata [working dir path]
-docker run --rm -it -v [working dir path on host]:[target path on container] --name falconkata_container falconkata
+docker run --rm -it -v [working dir path]:/falconkata --name falconkata_container falconkata
 ```
 
 ### Running the tests
-cd to working dir on container
 ```
+cd falconkata/
 make clean
 make check
 ```
 
 ### Running the calculator
-cd to working dir on container
 ```
+cd falconkata/
 make clean
 make run
 ```
