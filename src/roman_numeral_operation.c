@@ -8,7 +8,7 @@ bool add_two_roman_numerals(char ** result, const char * lhs, const char * rhs){
 
   if (sum_arabic_value <= MAX_ROMAN_NUMERAL_ARABIC_VALUE)
   {
-    convert_to_roman_numeral_from_arabic_value(result, sum_arabic_value);
+    convert_to_roman_numeral_from_arabic_value(*result, sum_arabic_value);
     return true;
   }
   else
@@ -25,7 +25,7 @@ bool subtract_two_roman_numerals(char ** result, const char * lhs, const char * 
   if (lhs_arabic_value >= rhs_arabic_value)
   {
     unsigned int result_arabic_value = lhs_arabic_value - rhs_arabic_value;
-    convert_to_roman_numeral_from_arabic_value(result, result_arabic_value);
+    convert_to_roman_numeral_from_arabic_value(*result, result_arabic_value);
     return true;
   }
   else
@@ -50,7 +50,7 @@ bool is_valid_roman_numeral(const char * roman_numeral)
   char ** expected_roman_numeral_pointer;
   expected_roman_numeral_pointer = &expected_roman_numeral;
 
-  convert_to_roman_numeral_from_arabic_value(expected_roman_numeral_pointer, roman_numeral_arabic_value);
+  convert_to_roman_numeral_from_arabic_value(*expected_roman_numeral_pointer, roman_numeral_arabic_value);
 
   if (strcmp(expected_roman_numeral, roman_numeral) == 0)
   {
