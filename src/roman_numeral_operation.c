@@ -1,6 +1,6 @@
 #include "../include/roman_numeral_operation.h"
 
-bool add_two_roman_numerals(char ** result, char * lhs, char * rhs){
+bool add_two_roman_numerals(char ** result, const char * lhs, const char * rhs){
   unsigned int lhs_arabic_value = convert_to_arabic_value_from_roman_numeral(lhs);
   unsigned int rhs_arabic_value = convert_to_arabic_value_from_roman_numeral(rhs);
 
@@ -17,7 +17,7 @@ bool add_two_roman_numerals(char ** result, char * lhs, char * rhs){
   }
 }
 
-bool subtract_two_roman_numerals(char ** result, char * lhs, char * rhs)
+bool subtract_two_roman_numerals(char ** result, const char * lhs, const char * rhs)
 {
   unsigned int lhs_arabic_value = convert_to_arabic_value_from_roman_numeral(lhs);
   unsigned int rhs_arabic_value = convert_to_arabic_value_from_roman_numeral(rhs);
@@ -34,7 +34,7 @@ bool subtract_two_roman_numerals(char ** result, char * lhs, char * rhs)
   }
 }
 
-bool is_valid_roman_numeral(char * roman_numeral)
+bool is_valid_roman_numeral(const char * roman_numeral)
 {
   int index;
   for (index = 0; index < strlen(roman_numeral); ++index)

@@ -1,6 +1,6 @@
 #include "../include/roman_numeral_letter.h"
 
-bool is_roman_numeral_letter(char roman_numeral_letter)
+bool is_roman_numeral_letter(const char roman_numeral_letter)
 {
   switch (toupper(roman_numeral_letter))
   {
@@ -17,7 +17,7 @@ bool is_roman_numeral_letter(char roman_numeral_letter)
   }
 }
 
-unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_letter)
+unsigned int get_arabic_value_from_roman_numeral_letter(const char roman_numeral_letter)
 {
   int arabic_value = ARABIC_VALUE_ZERO;
 
@@ -51,7 +51,7 @@ unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_lette
   return arabic_value;
 }
 
-char get_roman_numeral_letter_from_arabic_value(unsigned int arabic_value)
+char get_roman_numeral_letter_from_arabic_value(const unsigned int arabic_value)
 {
   char roman_numeral_letter = '\0';
 

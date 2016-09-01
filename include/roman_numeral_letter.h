@@ -25,6 +25,6 @@
 #define ARABIC_VALUE_ONE_THOUSAND 1000
 #define MAX_ROMAN_NUMERAL_ARABIC_VALUE 3999
 
-bool is_roman_numeral_letter(char roman_numeral_letter);
-unsigned int get_arabic_value_from_roman_numeral_letter(char roman_numeral_letter);
-char get_roman_numeral_letter_from_arabic_value(unsigned int arabic_value);
+bool is_roman_numeral_letter(const char roman_numeral_letter);
+unsigned int get_arabic_value_from_roman_numeral_letter(const char roman_numeral_letter);
+char get_roman_numeral_letter_from_arabic_value(const unsigned int arabic_value);

@@ -1,12 +1,12 @@
 #include "../include/roman_numeral_conversion.h"
 
-static void convert_to_roman_numeral_from_arabic_value_1_through_9(char ** roman_numeral, unsigned int arabic_value);
-static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** roman_numeral, unsigned int arabic_value);
-static void convert_to_roman_numeral_from_arabic_value_100_through_900(char ** roman_numeral, unsigned int arabic_value);
-static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(char ** roman_numeral, unsigned int arabic_value);
+static void convert_to_roman_numeral_from_arabic_value_1_through_9(char ** roman_numeral, const unsigned int arabic_value);
+static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** roman_numeral, const unsigned int arabic_value);
+static void convert_to_roman_numeral_from_arabic_value_100_through_900(char ** roman_numeral, const unsigned int arabic_value);
+static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(char ** roman_numeral, const unsigned int arabic_value);
 
 
-void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned int arabic_value)
+void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, const unsigned int arabic_value)
 {
   convert_to_roman_numeral_from_arabic_value_1000_through_3000(roman_numeral, arabic_value);
   convert_to_roman_numeral_from_arabic_value_100_through_900(roman_numeral, arabic_value);
@@ -14,7 +14,7 @@ void convert_to_roman_numeral_from_arabic_value(char ** roman_numeral, unsigned 
   convert_to_roman_numeral_from_arabic_value_1_through_9(roman_numeral, arabic_value);
 }
 
-unsigned int convert_to_arabic_value_from_roman_numeral(char * roman_numeral)
+unsigned int convert_to_arabic_value_from_roman_numeral(const char * roman_numeral)
 {
   int arabic_value = 0;
 
@@ -51,7 +51,7 @@ unsigned int convert_to_arabic_value_from_roman_numeral(char * roman_numeral)
   return arabic_value;
 }
 
-static void convert_to_roman_numeral_from_arabic_value_1_through_9(char ** roman_numeral, unsigned int arabic_value)
+static void convert_to_roman_numeral_from_arabic_value_1_through_9(char ** roman_numeral, const unsigned int arabic_value)
 {
   switch (arabic_value % 10)
   {
@@ -87,7 +87,7 @@ static void convert_to_roman_numeral_from_arabic_value_1_through_9(char ** roman
   }
 }
 
-static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** roman_numeral, unsigned int arabic_value)
+static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** roman_numeral, const unsigned int arabic_value)
 {
   unsigned int arabic_value_tens_digit = arabic_value / 10;
 
@@ -125,7 +125,7 @@ static void convert_to_roman_numeral_from_arabic_value_10_through_90(char ** rom
   }
 }
 
-static void convert_to_roman_numeral_from_arabic_value_100_through_900(char ** roman_numeral, unsigned int arabic_value)
+static void convert_to_roman_numeral_from_arabic_value_100_through_900(char ** roman_numeral, const unsigned int arabic_value)
 {
   unsigned int arabic_value_hundreds_digit = arabic_value / 100;
 
@@ -163,7 +163,7 @@ static void convert_to_roman_numeral_from_arabic_value_100_through_900(char ** r
   }
 }
 
-static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(char ** roman_numeral, unsigned int arabic_value)
+static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(char ** roman_numeral, const unsigned int arabic_value)
 {
   unsigned int arabic_value_thousands_digit = arabic_value / 1000;
 
