@@ -3,8 +3,6 @@
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1_through_9__returns_I_through_IX)
 {
   char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
-  char ** roman_numeral_pointer;
-  roman_numeral_pointer = &roman_numeral;
 
   char * expected_roman_numeral[] = {
     "\0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
@@ -13,22 +11,19 @@ START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1_through_9__r
   int index;
   for (index = 0; index <= 9; ++index)
   {
-    convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, index);
-    ck_assert_str_eq(expected_roman_numeral[index], *roman_numeral_pointer);
-    memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+    convert_to_roman_numeral_from_arabic_value(roman_numeral, index);
+    ck_assert_str_eq(expected_roman_numeral[index], roman_numeral);
+    memset(roman_numeral, 0, strlen(roman_numeral));
   }
 
   free(roman_numeral);
   roman_numeral = NULL;
-  roman_numeral_pointer = NULL;
 }
 END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_10_through_90__returns_X_through_XC)
 {
   char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
-  char ** roman_numeral_pointer;
-  roman_numeral_pointer = &roman_numeral;
 
   char * expected_roman_numeral[] = {
     "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"
@@ -41,22 +36,19 @@ START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_10_through_90_
   int index;
   for (index = 0; index <= 8; ++index)
   {
-    convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, input_arabic_value[index]);
-    ck_assert_str_eq(expected_roman_numeral[index], *roman_numeral_pointer);
-    memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+    convert_to_roman_numeral_from_arabic_value(roman_numeral, input_arabic_value[index]);
+    ck_assert_str_eq(expected_roman_numeral[index], roman_numeral);
+    memset(roman_numeral, 0, strlen(roman_numeral));
   }
 
   free(roman_numeral);
   roman_numeral = NULL;
-  roman_numeral_pointer = NULL;
 }
 END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_100_through_900__returns_C_through_CM)
 {
   char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
-  char ** roman_numeral_pointer;
-  roman_numeral_pointer = &roman_numeral;
 
   char * expected_roman_numeral[] = {
     "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"
@@ -69,54 +61,48 @@ START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_100_through_90
   int index;
   for (index = 0; index <= 8; ++index)
   {
-    convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, input_arabic_value[index]);
-    ck_assert_str_eq(expected_roman_numeral[index], *roman_numeral_pointer);
-    memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+    convert_to_roman_numeral_from_arabic_value(roman_numeral, input_arabic_value[index]);
+    ck_assert_str_eq(expected_roman_numeral[index], roman_numeral);
+    memset(roman_numeral, 0, strlen(roman_numeral));
   }
 
   free(roman_numeral);
   roman_numeral = NULL;
-  roman_numeral_pointer = NULL;
 }
 END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1000_through_3000__returns_M_through_MMM)
 {
   char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
-  char ** roman_numeral_pointer;
-  roman_numeral_pointer = &roman_numeral;
 
-  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 1000);
-  ck_assert_str_eq("M", *roman_numeral_pointer);
-  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, 1000);
+  ck_assert_str_eq("M", roman_numeral);
+  memset(roman_numeral, 0, strlen(roman_numeral));
 
-  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 2000);
-  ck_assert_str_eq("MM", *roman_numeral_pointer);
-  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, 2000);
+  ck_assert_str_eq("MM", roman_numeral);
+  memset(roman_numeral, 0, strlen(roman_numeral));
 
-  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, 3000);
-  ck_assert_str_eq("MMM", *roman_numeral_pointer);
-  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, 3000);
+  ck_assert_str_eq("MMM", roman_numeral);
+  memset(roman_numeral, 0, strlen(roman_numeral));
+
 
   free(roman_numeral);
   roman_numeral = NULL;
-  roman_numeral_pointer = NULL;
 }
 END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_3999__returns_MMMCMXCIX)
 {
   char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
-  char ** roman_numeral_pointer;
-  roman_numeral_pointer = &roman_numeral;
 
-  convert_to_roman_numeral_from_arabic_value(roman_numeral_pointer, MAX_ROMAN_NUMERAL_ARABIC_VALUE);
-  ck_assert_str_eq(MAX_ROMAN_NUMERAL, *roman_numeral_pointer);
-  memset(*roman_numeral_pointer, 0, strlen(*roman_numeral_pointer));
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, MAX_ROMAN_NUMERAL_ARABIC_VALUE);
+  ck_assert_str_eq(MAX_ROMAN_NUMERAL, roman_numeral);
+  memset(roman_numeral, 0, strlen(roman_numeral));
 
   free(roman_numeral);
   roman_numeral = NULL;
-  roman_numeral_pointer = NULL;
 }
 END_TEST
 

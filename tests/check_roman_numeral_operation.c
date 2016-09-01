@@ -53,10 +53,10 @@ START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__retur
     {
       expected_result_arabic_value = lhs_arabic_value + rhs_arabic_value;
 
-      convert_to_roman_numeral_from_arabic_value(expected_result_pointer, expected_result_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(*expected_result_pointer, expected_result_arabic_value);
 
-      convert_to_roman_numeral_from_arabic_value(lhs_roman_numeral_pointer, lhs_arabic_value);
-      convert_to_roman_numeral_from_arabic_value(rhs_roman_numeral_pointer, rhs_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(*lhs_roman_numeral_pointer, lhs_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(*rhs_roman_numeral_pointer, rhs_arabic_value);
 
       did_add_successfully = add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
@@ -138,10 +138,10 @@ START_TEST(test_subtract_two_roman_numerals__given_all_valid_combination_inputs_
     for (rhs_arabic_value = lhs_arabic_value; rhs_arabic_value >= 0 && rhs_arabic_value <= lhs_arabic_value; --rhs_arabic_value)
     {
       expected_result_arabic_value = lhs_arabic_value - rhs_arabic_value;
-      convert_to_roman_numeral_from_arabic_value(expected_result_pointer, expected_result_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(*expected_result_pointer, expected_result_arabic_value);
 
-      convert_to_roman_numeral_from_arabic_value(lhs_roman_numeral_pointer, lhs_arabic_value);
-      convert_to_roman_numeral_from_arabic_value(rhs_roman_numeral_pointer, rhs_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(*lhs_roman_numeral_pointer, lhs_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(*rhs_roman_numeral_pointer, rhs_arabic_value);
 
       did_subtract_successfully = subtract_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
