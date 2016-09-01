@@ -1,4 +1,4 @@
-#include "headers/roman_numeral_calculator.h"
+#include "../include/roman_numeral_calculator.h"
 
 bool perform_operation_with_roman_numerals(char ** result, char * lhs_roman_numeral, char * rhs_roman_numeral, char * operation)
 {
