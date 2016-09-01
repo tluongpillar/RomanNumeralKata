@@ -10,7 +10,7 @@ check: roman_numeral_calculator.o roman_numeral_operation.o roman_numeral_conver
 	${CC} ${CFLAGS} -o check_tests roman_numeral_calculator.o roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_calculator.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o -lcheck -lpthread -lm -lrt
 	./check_tests
 
-libromancal.so: roman_numeral_calculator.o roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o
+libromancal: roman_numeral_calculator.o roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o
 	${CC} ${CFLAGS} -shared -o libromancal.so roman_numeral_calculator.o roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o
 
 roman_numeral_calculator.o:

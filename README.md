@@ -15,11 +15,11 @@ make clean
 make check
 ```
 
-### Running the calculator
+### Compiling libromancal
 ```
 cd falconkata/
 make clean
-make run
+make libromancal
 ```
 
 ## Roman Numeral Calculator
