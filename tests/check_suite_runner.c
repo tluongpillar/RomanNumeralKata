@@ -1,4 +1,4 @@
-#include "headers/check_suite_runner.h"
+#include "include/check_suite_runner.h"
 
 int main()
 {
