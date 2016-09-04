@@ -1,21 +1,44 @@
 #include "include/check_roman_numeral_operation.h"
 
+char * lhs_roman_numeral;
+char * rhs_roman_numeral;
+char * expected_result;
+char * actual_result;
+
+static void setup()
+{
+  const int max_roman_numeral_string_length = strlen(MAX_ROMAN_NUMERAL) + 1;
+  lhs_roman_numeral = calloc(max_roman_numeral_string_length, sizeof(char));
+  rhs_roman_numeral = calloc(max_roman_numeral_string_length, sizeof(char));
+  expected_result = calloc(max_roman_numeral_string_length, sizeof(char));
+  actual_result = calloc(max_roman_numeral_string_length, sizeof(char));
+}
+
+static void teardown()
+{
+  free(lhs_roman_numeral);
+  lhs_roman_numeral = NULL;
+
+  free(rhs_roman_numeral);
+  rhs_roman_numeral = NULL;
+
+  free(expected_result);
+  expected_result = NULL;
+
+  free(actual_result);
+  actual_result = NULL;
+}
+
 START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string_with_failure)
 {
-  char * lhs_roman_numeral = MAX_ROMAN_NUMERAL;
-  char * rhs_roman_numeral = "I";
-
-  char * expected_result = "\0";
-
-  char * actual_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
+  strcpy(lhs_roman_numeral, MAX_ROMAN_NUMERAL);
+  strcpy(rhs_roman_numeral, "I");
+  strcpy(expected_result, "\0");
 
   bool did_add_successfully = add_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
 
   ck_assert(false == did_add_successfully);
   ck_assert_str_eq(expected_result, actual_result);
-
-  free(actual_result);
-  actual_result = NULL;
 }
 END_TEST
 
@@ -104,7 +127,7 @@ START_TEST(test_subtract_two_roman_numerals__given_all_valid_combination_inputs_
   unsigned int expected_result_arabic_value;
   unsigned int lhs_arabic_value;
   unsigned int rhs_arabic_value;
-  
+
   for (lhs_arabic_value = MAX_ROMAN_NUMERAL_ARABIC_VALUE; lhs_arabic_value >= 0 && lhs_arabic_value <= MAX_ROMAN_NUMERAL_ARABIC_VALUE; --lhs_arabic_value)
   {
     for (rhs_arabic_value = lhs_arabic_value; rhs_arabic_value >= 0 && rhs_arabic_value <= lhs_arabic_value; --rhs_arabic_value)
@@ -174,6 +197,8 @@ Suite * roman_numeral_operation_suite()
 
   suite = suite_create("RomanNumeralOperation");
   tcase_core = tcase_create("Core");
+
+  tcase_add_checked_fixture(tcase_core, setup, teardown);
 
   tcase_set_timeout(tcase_core, 3600);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_empty_string__returns_true);
