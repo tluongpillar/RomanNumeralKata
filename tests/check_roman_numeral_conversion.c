@@ -74,21 +74,9 @@ START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_3999__returns_
 }
 END_TEST
 
-START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_I_through_IX__returns_1_through_9)
+START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_empty_string_through_IX__returns_0_through_9)
 {
-  char * input_roman_numeral[] = {
-    "\0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
-  };
-
-  unsigned int expected_arabic_value[] = {
-    0, 1, 2, 3, 4, 5, 6, 7, 8, 9
-  };
-
-  int index;
-  for (index = 0; index <= 9; ++index)
-  {
-    ck_assert_uint_eq(expected_arabic_value[index], convert_to_arabic_value_from_roman_numeral(input_roman_numeral[index]));
-  }
+  ck_assert_uint_eq(arabic_value_ones_digit[_i], convert_to_arabic_value_from_roman_numeral(roman_numeral_ones_digit[_i]));
 }
 END_TEST
 
@@ -169,7 +157,7 @@ Suite * roman_numeral_conversion_suite()
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_M_through_MMM_by_M__returns_1000_through_3000_by_1000);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_C_through_CM_by_C__returns_100_through_900_by_100);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_X_through_XC_by_X__returns_10_through_90_by_10);
-  tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_I_through_IX__returns_1_through_9);
+  tcase_add_loop_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_empty_string_through_IX__returns_0_through_9, start_index, roman_numeral_ones_digit_length);
 
   suite_add_tcase(suite, tcase_core);
 
