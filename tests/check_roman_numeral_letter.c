@@ -2,22 +2,15 @@
 
 static const char invalid_roman_numeral_letters[] = "ABEFGHJKNOPQRSTUWYZ";
 static const int standard_US_alphabet_letters_count = 26;
+static const int invalid_arabic_values[21] = {
+  2,3,4,6,7,8,9,
+  20,30,40,60,70,80,90,
+  200,300,400,600,700,800,900
+};
 
 START_TEST (test_get_roman_numeral_letter_from_arabic_value__given_invalid_arabic_value__returns_null_value)
 {
-  int invalid_arabic_values[] = {
-    2,3,4,6,7,8,9,
-    20,30,40,60,70,80,90,
-    200,300,400,600,700,800,900
-  };
-
-  int invalid_arabic_values_count = sizeof(invalid_arabic_values) / sizeof(invalid_arabic_values[0]);
-
-  int index;
-  for (index = 0; index < invalid_arabic_values_count; ++index)
-  {
-    ck_assert_uint_eq('\0', get_roman_numeral_letter_from_arabic_value(invalid_arabic_values[index]));
-  }
+  ck_assert_uint_eq('\0', get_roman_numeral_letter_from_arabic_value(invalid_arabic_values[_i]));
 }
 END_TEST
 
@@ -113,7 +106,7 @@ Suite * roman_numeral_letter_suite()
   suite = suite_create("RomanNumeralLetter");
   tcase_core = tcase_create("Core");
 
-  tcase_add_test(tcase_core, test_get_roman_numeral_letter_from_arabic_value__given_invalid_arabic_value__returns_null_value);
+  tcase_add_loop_test(tcase_core, test_get_roman_numeral_letter_from_arabic_value__given_invalid_arabic_value__returns_null_value, 0, 21);
   tcase_add_test(tcase_core, test_get_roman_numeral_letter_from_arabic_value__given_valid_arabic_value__returns_expected_roman_numeral_letter);
   tcase_add_test(tcase_core, test_get_arabic_value_from_roman_numeral_letter__given_invalid_roman_numeral_letters__returns_arabic_value_zero);
   tcase_add_test(tcase_core, test_get_arabic_value_from_roman_numeral_letter__given_roman_numeral_letters__returns_expected_arabic_values);
