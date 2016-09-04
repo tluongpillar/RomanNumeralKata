@@ -26,14 +26,14 @@ static const unsigned int arabic_value_thousands_digit[3] = {
   1000, 2000, 3000
 };
 
-char * roman_numeral;
+static char * roman_numeral;
 
-void setup()
+static void setup()
 {
   roman_numeral = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
 }
 
-void teardown()
+static void teardown()
 {
   free(roman_numeral);
   roman_numeral = NULL;

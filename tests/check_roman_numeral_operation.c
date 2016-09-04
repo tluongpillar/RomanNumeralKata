@@ -1,9 +1,9 @@
 #include "include/check_roman_numeral_operation.h"
 
-char * lhs_roman_numeral;
-char * rhs_roman_numeral;
-char * expected_result;
-char * actual_result;
+static char * lhs_roman_numeral;
+static char * rhs_roman_numeral;
+static char * expected_result;
+static char * actual_result;
 
 static void setup()
 {
