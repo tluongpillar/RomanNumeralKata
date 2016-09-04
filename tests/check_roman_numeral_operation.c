@@ -52,12 +52,22 @@ START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_
 }
 END_TEST
 
+START_TEST(test_add_two_roman_numerals__given_I_plus_I__returns_true)
+{
+  strcpy(lhs_roman_numeral, "I");
+  strcpy(rhs_roman_numeral, "I");
+
+  bool did_add_successfully = add_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
+
+  ck_assert(true == did_add_successfully);
+}
+END_TEST
+
 START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success)
 {
   const unsigned int lhs_arabic_value = _i;
-  bool did_add_successfully = false;
+  const unsigned int rhs_arabic_value_upper_limit = MAX_ROMAN_NUMERAL_ARABIC_VALUE - lhs_arabic_value;
   unsigned int expected_result_arabic_value;
-  unsigned int rhs_arabic_value_upper_limit = MAX_ROMAN_NUMERAL_ARABIC_VALUE - lhs_arabic_value;
 
   unsigned int rhs_arabic_value;
   for (rhs_arabic_value = 0; rhs_arabic_value <= rhs_arabic_value_upper_limit; ++rhs_arabic_value)
@@ -67,12 +77,9 @@ START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__retur
     convert_to_roman_numeral_from_arabic_value(lhs_roman_numeral, lhs_arabic_value);
     convert_to_roman_numeral_from_arabic_value(rhs_roman_numeral, rhs_arabic_value);
 
-    did_add_successfully = add_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
+    add_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
 
-    ck_assert(true == did_add_successfully);
     ck_assert_str_eq(expected_result, actual_result);
-
-    did_add_successfully = false;
 
     memset(lhs_roman_numeral, 0, strlen(lhs_roman_numeral));
     memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
@@ -197,6 +204,7 @@ Suite * roman_numeral_operation_suite()
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_MAX_ROMAN_NUMERAL__returns_true);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false);
+  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_I_plus_I__returns_true);
   tcase_add_loop_test(tcase_core, test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success, start_index, MAX_ROMAN_NUMERAL_ARABIC_VALUE + 1);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_false);
