@@ -3,6 +3,13 @@
 static const char * roman_numeral_ones_digit[10] = {
   "\0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
 };
+static const char * roman_numeral_tens_digit[9] = {
+  "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"
+};
+
+static const unsigned int arabic_value_tens_digit[9] = {
+  10, 20, 30, 40, 50, 60, 70, 80, 90
+};
 
 char * roman_numeral;
 
@@ -26,26 +33,8 @@ END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_10_through_90__returns_X_through_XC)
 {
-  char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
-
-  char * expected_roman_numeral[] = {
-    "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"
-  };
-
-  unsigned int input_arabic_value[] = {
-    10, 20, 30, 40, 50, 60, 70, 80, 90
-  };
-
-  int index;
-  for (index = 0; index <= 8; ++index)
-  {
-    convert_to_roman_numeral_from_arabic_value(roman_numeral, input_arabic_value[index]);
-    ck_assert_str_eq(expected_roman_numeral[index], roman_numeral);
-    memset(roman_numeral, 0, strlen(roman_numeral));
-  }
-
-  free(roman_numeral);
-  roman_numeral = NULL;
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, arabic_value_tens_digit[_i]);
+  ck_assert_str_eq(roman_numeral_tens_digit[_i], roman_numeral);
 }
 END_TEST
 
@@ -186,6 +175,7 @@ Suite * roman_numeral_conversion_suite()
 
   const int start_index = 0;
   const int roman_numeral_ones_digit_length = sizeof(roman_numeral_ones_digit) / sizeof(roman_numeral_ones_digit[0]);
+  const int roman_numeral_tens_digit_length = sizeof(roman_numeral_tens_digit) / sizeof(roman_numeral_tens_digit[0]);
 
   suite = suite_create("RomanNumeralConversion");
   tcase_core = tcase_create("Core");
@@ -195,7 +185,7 @@ Suite * roman_numeral_conversion_suite()
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_3999__returns_MMMCMXCIX);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1000_through_3000__returns_M_through_MMM);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_100_through_900__returns_C_through_CM);
-  tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_10_through_90__returns_X_through_XC);
+  tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_10_through_90__returns_X_through_XC, start_index, roman_numeral_tens_digit_length);
   tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_0_through_9__returns_empty_string_through_IX, start_index, roman_numeral_ones_digit_length);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_MMMCMXCIX_max_roman_numeral__returns_3999);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_M_through_MMM_by_M__returns_1000_through_3000_by_1000);
