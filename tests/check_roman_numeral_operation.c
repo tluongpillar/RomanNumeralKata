@@ -8,37 +8,26 @@ START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_
   char * expected_result = "\0";
 
   char * actual_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
-  char ** actual_result_pointer;
-  actual_result_pointer = &actual_result;
 
-  bool did_add_successfully = add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
+  bool did_add_successfully = add_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
 
   ck_assert(false == did_add_successfully);
   ck_assert_str_eq(expected_result, actual_result);
 
   free(actual_result);
   actual_result = NULL;
-  actual_result_pointer = NULL;
 }
 END_TEST
 
 START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success)
 {
   char * expected_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
-  char ** expected_result_pointer;
-  expected_result_pointer = &expected_result;
 
   char * actual_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
-  char ** actual_result_pointer;
-  actual_result_pointer = &actual_result;
 
   char * lhs_roman_numeral = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
-  char ** lhs_roman_numeral_pointer;
-  lhs_roman_numeral_pointer = &lhs_roman_numeral;
 
   char * rhs_roman_numeral = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
-  char ** rhs_roman_numeral_pointer;
-  rhs_roman_numeral_pointer = &rhs_roman_numeral;
 
   bool did_add_successfully = false;
   unsigned int expected_result_arabic_value;
@@ -53,12 +42,12 @@ START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__retur
     {
       expected_result_arabic_value = lhs_arabic_value + rhs_arabic_value;
 
-      convert_to_roman_numeral_from_arabic_value(*expected_result_pointer, expected_result_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(expected_result, expected_result_arabic_value);
 
-      convert_to_roman_numeral_from_arabic_value(*lhs_roman_numeral_pointer, lhs_arabic_value);
-      convert_to_roman_numeral_from_arabic_value(*rhs_roman_numeral_pointer, rhs_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(lhs_roman_numeral, lhs_arabic_value);
+      convert_to_roman_numeral_from_arabic_value(rhs_roman_numeral, rhs_arabic_value);
 
-      did_add_successfully = add_two_roman_numerals(actual_result_pointer, lhs_roman_numeral, rhs_roman_numeral);
+      did_add_successfully = add_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
 
       ck_assert(true == did_add_successfully);
       ck_assert_str_eq(expected_result, actual_result);
@@ -73,19 +62,15 @@ START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__retur
 
   free(lhs_roman_numeral);
   lhs_roman_numeral = NULL;
-  lhs_roman_numeral_pointer = NULL;
 
   free(rhs_roman_numeral);
   rhs_roman_numeral = NULL;
-  rhs_roman_numeral_pointer = NULL;
 
   free(actual_result);
   actual_result = NULL;
-  actual_result_pointer = NULL;
 
   free(expected_result);
   expected_result = NULL;
-  expected_result_pointer = NULL;
 }
 END_TEST
 
