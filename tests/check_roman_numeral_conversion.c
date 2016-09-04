@@ -9,12 +9,18 @@ static const char * roman_numeral_tens_digit[9] = {
 static const char * roman_numeral_hundreds_digit[9] = {
   "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"
 };
+static const char * roman_numeral_thousands_digit[3] = {
+  "M", "MM", "MMM"
+};
 
 static const unsigned int arabic_value_tens_digit[9] = {
   10, 20, 30, 40, 50, 60, 70, 80, 90
 };
 static const unsigned int arabic_value_hundreds_digit[9] = {
   100, 200, 300, 400, 500, 600, 700, 800, 900
+};
+static const unsigned int arabic_value_thousands_digit[3] = {
+  1000, 2000, 3000
 };
 
 char * roman_numeral;
@@ -53,23 +59,8 @@ END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1000_through_3000__returns_M_through_MMM)
 {
-  char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
-
-  convert_to_roman_numeral_from_arabic_value(roman_numeral, 1000);
-  ck_assert_str_eq("M", roman_numeral);
-  memset(roman_numeral, 0, strlen(roman_numeral));
-
-  convert_to_roman_numeral_from_arabic_value(roman_numeral, 2000);
-  ck_assert_str_eq("MM", roman_numeral);
-  memset(roman_numeral, 0, strlen(roman_numeral));
-
-  convert_to_roman_numeral_from_arabic_value(roman_numeral, 3000);
-  ck_assert_str_eq("MMM", roman_numeral);
-  memset(roman_numeral, 0, strlen(roman_numeral));
-
-
-  free(roman_numeral);
-  roman_numeral = NULL;
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, arabic_value_thousands_digit[_i]);
+  ck_assert_str_eq(roman_numeral_thousands_digit[_i], roman_numeral);
 }
 END_TEST
 
@@ -165,6 +156,7 @@ Suite * roman_numeral_conversion_suite()
   const int roman_numeral_ones_digit_length = sizeof(roman_numeral_ones_digit) / sizeof(roman_numeral_ones_digit[0]);
   const int roman_numeral_tens_digit_length = sizeof(roman_numeral_tens_digit) / sizeof(roman_numeral_tens_digit[0]);
   const int roman_numeral_hundreds_digit_length = sizeof(roman_numeral_hundreds_digit) / sizeof(roman_numeral_hundreds_digit[0]);
+  const int roman_numeral_thousands_digit_length = sizeof(roman_numeral_thousands_digit) / sizeof(roman_numeral_thousands_digit[0]);
 
   suite = suite_create("RomanNumeralConversion");
   tcase_core = tcase_create("Core");
@@ -172,7 +164,7 @@ Suite * roman_numeral_conversion_suite()
   tcase_add_checked_fixture(tcase_core, setup, teardown);
 
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_3999__returns_MMMCMXCIX);
-  tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1000_through_3000__returns_M_through_MMM);
+  tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1000_through_3000__returns_M_through_MMM, start_index, roman_numeral_thousands_digit_length);
   tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_100_through_900__returns_C_through_CM, start_index, roman_numeral_hundreds_digit_length);
   tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_10_through_90__returns_X_through_XC, start_index, roman_numeral_tens_digit_length);
   tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_0_through_9__returns_empty_string_through_IX, start_index, roman_numeral_ones_digit_length);
