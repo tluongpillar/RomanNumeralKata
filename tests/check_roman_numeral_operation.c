@@ -82,22 +82,26 @@ START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__retur
 }
 END_TEST
 
-START_TEST(test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string_with_failure)
+START_TEST(test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string)
 {
-  char * lhs_roman_numeral = "I";
-  char * rhs_roman_numeral = "II";
+  strcpy(lhs_roman_numeral, "I");
+  strcpy(rhs_roman_numeral, "II");
+  strcpy(expected_result, "\0");
 
-  char * expected_result = "\0";
+  subtract_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
 
-  char * actual_result = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
+  ck_assert_str_eq(expected_result, actual_result);
+}
+END_TEST
+
+START_TEST(test_subtract_two_roman_numerals__given_I_minus_II__returns_false)
+{
+  strcpy(lhs_roman_numeral, "I");
+  strcpy(rhs_roman_numeral, "II");
 
   bool did_subtract_successfully = subtract_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
 
   ck_assert(false == did_subtract_successfully);
-  ck_assert_str_eq(expected_result, actual_result);
-
-  free(actual_result);
-  actual_result = NULL;
 }
 END_TEST
 
@@ -194,7 +198,8 @@ Suite * roman_numeral_operation_suite()
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false);
   tcase_add_loop_test(tcase_core, test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success, start_index, MAX_ROMAN_NUMERAL_ARABIC_VALUE + 1);
-  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string_with_failure);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_false);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success);
 
   suite_add_tcase(suite, tcase_core);
