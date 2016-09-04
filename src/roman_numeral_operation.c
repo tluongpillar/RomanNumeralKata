@@ -1,6 +1,6 @@
 #include "../include/roman_numeral_operation.h"
 
-bool add_two_roman_numerals(char ** result, const char * lhs, const char * rhs){
+bool add_two_roman_numerals(char * result, const char * lhs, const char * rhs){
   unsigned int lhs_arabic_value = convert_to_arabic_value_from_roman_numeral(lhs);
   unsigned int rhs_arabic_value = convert_to_arabic_value_from_roman_numeral(rhs);
 
@@ -8,7 +8,7 @@ bool add_two_roman_numerals(char ** result, const char * lhs, const char * rhs){
 
   if (sum_arabic_value <= MAX_ROMAN_NUMERAL_ARABIC_VALUE)
   {
-    convert_to_roman_numeral_from_arabic_value(*result, sum_arabic_value);
+    convert_to_roman_numeral_from_arabic_value(result, sum_arabic_value);
     return true;
   }
   else
