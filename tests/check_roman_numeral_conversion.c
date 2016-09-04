@@ -4,16 +4,23 @@ static const char * roman_numeral_ones_digit[10] = {
   "\0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
 };
 
-START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1_through_9__returns_I_through_IX)
+char * roman_numeral;
+
+void setup()
 {
-  char * roman_numeral = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
+  roman_numeral = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
+}
 
-  convert_to_roman_numeral_from_arabic_value(roman_numeral, _i);
-
-  ck_assert_str_eq(roman_numeral_ones_digit[_i], roman_numeral);
-
+void teardown()
+{
   free(roman_numeral);
   roman_numeral = NULL;
+}
+
+START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1_through_9__returns_I_through_IX)
+{
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, _i);
+  ck_assert_str_eq(roman_numeral_ones_digit[_i], roman_numeral);
 }
 END_TEST
 
@@ -182,6 +189,8 @@ Suite * roman_numeral_conversion_suite()
 
   suite = suite_create("RomanNumeralConversion");
   tcase_core = tcase_create("Core");
+
+  tcase_add_checked_fixture(tcase_core, setup, teardown);
 
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_3999__returns_MMMCMXCIX);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1000_through_3000__returns_M_through_MMM);
