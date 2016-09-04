@@ -112,6 +112,17 @@ START_TEST(test_subtract_two_roman_numerals__given_I_minus_II__returns_false)
 }
 END_TEST
 
+START_TEST(test_subtract_two_roman_numerals__given_II_minus_I__returns_true)
+{
+  strcpy(lhs_roman_numeral, "II");
+  strcpy(rhs_roman_numeral, "I");
+
+  bool did_subtract_successfully = subtract_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
+
+  ck_assert(true == did_subtract_successfully);
+}
+END_TEST
+
 START_TEST(test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success)
 {
   char * lhs_roman_numeral = calloc((strlen(MAX_ROMAN_NUMERAL) + 1), sizeof(char));
@@ -208,6 +219,7 @@ Suite * roman_numeral_operation_suite()
   tcase_add_loop_test(tcase_core, test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success, start_index, MAX_ROMAN_NUMERAL_ARABIC_VALUE + 1);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_false);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_II_minus_I__returns_true);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success);
 
   suite_add_tcase(suite, tcase_core);
