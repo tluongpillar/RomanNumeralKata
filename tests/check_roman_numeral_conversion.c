@@ -13,6 +13,9 @@ static const char * roman_numeral_thousands_digit[3] = {
   "M", "MM", "MMM"
 };
 
+static const unsigned int arabic_value_ones_digit[10] = {
+  0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+};
 static const unsigned int arabic_value_tens_digit[9] = {
   10, 20, 30, 40, 50, 60, 70, 80, 90
 };
@@ -38,7 +41,7 @@ void teardown()
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_0_through_9__returns_empty_string_through_IX)
 {
-  convert_to_roman_numeral_from_arabic_value(roman_numeral, _i);
+  convert_to_roman_numeral_from_arabic_value(roman_numeral, arabic_value_ones_digit[_i]);
   ck_assert_str_eq(roman_numeral_ones_digit[_i], roman_numeral);
 }
 END_TEST
@@ -66,14 +69,8 @@ END_TEST
 
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_3999__returns_MMMCMXCIX)
 {
-  char * roman_numeral = (char*)malloc((strlen(MAX_ROMAN_NUMERAL) + 1) * sizeof(char));
-
   convert_to_roman_numeral_from_arabic_value(roman_numeral, MAX_ROMAN_NUMERAL_ARABIC_VALUE);
   ck_assert_str_eq(MAX_ROMAN_NUMERAL, roman_numeral);
-  memset(roman_numeral, 0, strlen(roman_numeral));
-
-  free(roman_numeral);
-  roman_numeral = NULL;
 }
 END_TEST
 
