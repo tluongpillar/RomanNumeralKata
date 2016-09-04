@@ -29,6 +29,14 @@ static void teardown()
   actual_result = NULL;
 }
 
+static void reset_string_variables()
+{
+  memset(lhs_roman_numeral, 0, strlen(lhs_roman_numeral));
+  memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
+  memset(expected_result, 0, strlen(expected_result));
+  memset(actual_result, 0, strlen(actual_result));
+}
+
 START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string)
 {
   strcpy(lhs_roman_numeral, MAX_ROMAN_NUMERAL);
@@ -81,10 +89,7 @@ START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__retur
 
     ck_assert_str_eq(expected_result, actual_result);
 
-    memset(lhs_roman_numeral, 0, strlen(lhs_roman_numeral));
-    memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
-    memset(expected_result, 0, strlen(expected_result));
-    memset(actual_result, 0, strlen(actual_result));
+    reset_string_variables();
   }
 }
 END_TEST
@@ -140,10 +145,7 @@ START_TEST(test_subtract_two_roman_numerals__given_all_valid_combination_inputs_
 
     ck_assert_str_eq(expected_result, actual_result);
 
-    memset(lhs_roman_numeral, 0, strlen(lhs_roman_numeral));
-    memset(rhs_roman_numeral, 0, strlen(rhs_roman_numeral));
-    memset(expected_result, 0, strlen(expected_result));
-    memset(actual_result, 0, strlen(actual_result));
+    reset_string_variables();
   }
 }
 END_TEST
@@ -177,6 +179,7 @@ Suite * roman_numeral_operation_suite()
   Suite *suite;
   TCase *tcase_core;
   const int start_index = 0;
+  const int all_valid_combination_inputs_length = MAX_ROMAN_NUMERAL_ARABIC_VALUE + 1;
 
   suite = suite_create("RomanNumeralOperation");
   tcase_core = tcase_create("Core");
@@ -191,11 +194,11 @@ Suite * roman_numeral_operation_suite()
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_I_plus_I__returns_true);
-  tcase_add_loop_test(tcase_core, test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success, start_index, MAX_ROMAN_NUMERAL_ARABIC_VALUE + 1);
+  tcase_add_loop_test(tcase_core, test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success, start_index, all_valid_combination_inputs_length);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_empty_string);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_I_minus_II__returns_false);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_II_minus_I__returns_true);
-  tcase_add_loop_test(tcase_core, test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success, start_index, MAX_ROMAN_NUMERAL_ARABIC_VALUE + 1);
+  tcase_add_loop_test(tcase_core, test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success, start_index, all_valid_combination_inputs_length);
 
   suite_add_tcase(suite, tcase_core);
 
