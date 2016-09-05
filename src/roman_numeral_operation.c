@@ -1,5 +1,7 @@
 #include "../include/roman_numeral_operation.h"
 
+static char * invalid_result = "INVALID";
+
 bool add_two_roman_numerals(char * result, const char * lhs, const char * rhs){
   bool success = false;
   unsigned int lhs_arabic_value = convert_to_arabic_value_from_roman_numeral(lhs);
@@ -11,6 +13,10 @@ bool add_two_roman_numerals(char * result, const char * lhs, const char * rhs){
   {
     convert_to_roman_numeral_from_arabic_value(result, sum_arabic_value);
     success = true;
+  }
+  else
+  {
+    strcpy(result, invalid_result);
   }
 
   return success;
