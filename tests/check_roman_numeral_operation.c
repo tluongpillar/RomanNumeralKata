@@ -4,6 +4,7 @@ static char * lhs_roman_numeral;
 static char * rhs_roman_numeral;
 static char * expected_result;
 static char * actual_result;
+static char * failed_result = "INVALID";
 
 static void setup()
 {
@@ -37,15 +38,14 @@ static void reset_string_variables()
   memset(actual_result, 0, strlen(actual_result));
 }
 
-START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string)
+START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_INVALID_string)
 {
   strcpy(lhs_roman_numeral, MAX_ROMAN_NUMERAL);
   strcpy(rhs_roman_numeral, "I");
-  strcpy(expected_result, "\0");
 
   add_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
 
-  ck_assert_str_eq(expected_result, actual_result);
+  ck_assert_str_eq(failed_result, actual_result);
 }
 END_TEST
 
@@ -191,7 +191,7 @@ Suite * roman_numeral_operation_suite()
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_invalid_out_of_order_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_invalid_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_MAX_ROMAN_NUMERAL__returns_true);
-  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_empty_string);
+  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_INVALID_string);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_I_plus_I__returns_true);
   tcase_add_loop_test(tcase_core, test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success, start_index, all_valid_combination_inputs_length);
