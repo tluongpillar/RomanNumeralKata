@@ -1,10 +1,22 @@
 #include "../include/roman_numeral_conversion.h"
 
+static const char * roman_numeral_ones_digit[10] = {
+  "\0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
+};
+static const char * roman_numeral_tens_digit[10] = {
+  "\0", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"
+};
+static const char * roman_numeral_hundreds_digit[10] = {
+  "\0", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"
+};
+static const char * roman_numeral_thousands_digit[4] = {
+  "\0", "M", "MM", "MMM"
+};
+
 static void convert_to_roman_numeral_from_arabic_value_1_through_9(char * roman_numeral, const unsigned int arabic_value);
 static void convert_to_roman_numeral_from_arabic_value_10_through_90(char * roman_numeral, const unsigned int arabic_value);
 static void convert_to_roman_numeral_from_arabic_value_100_through_900(char * roman_numeral, const unsigned int arabic_value);
 static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(char * roman_numeral, const unsigned int arabic_value);
-
 
 void convert_to_roman_numeral_from_arabic_value(char * roman_numeral, const unsigned int arabic_value)
 {
@@ -53,132 +65,30 @@ unsigned int convert_to_arabic_value_from_roman_numeral(const char * roman_numer
 
 static void convert_to_roman_numeral_from_arabic_value_1_through_9(char * roman_numeral, const unsigned int arabic_value)
 {
-  switch (arabic_value % 10)
-  {
-    case 1:
-    strcat(roman_numeral, "I");
-    break;
-    case 2:
-    strcat(roman_numeral, "II");
-    break;
-    case 3:
-    strcat(roman_numeral, "III");
-    break;
-    case 4:
-    strcat(roman_numeral, "IV");
-    break;
-    case 5:
-    strcat(roman_numeral, "V");
-    break;
-    case 6:
-    strcat(roman_numeral, "VI");
-    break;
-    case 7:
-    strcat(roman_numeral, "VII");
-    break;
-    case 8:
-    strcat(roman_numeral, "VIII");
-    break;
-    case 9:
-    strcat(roman_numeral, "IX");
-    break;
-    default:
-    break;
-  }
+  int index = arabic_value % 10;
+  strcat(roman_numeral, roman_numeral_ones_digit[index]);
 }
 
 static void convert_to_roman_numeral_from_arabic_value_10_through_90(char * roman_numeral, const unsigned int arabic_value)
 {
   unsigned int arabic_value_tens_digit = arabic_value / 10;
 
-  switch (arabic_value_tens_digit % 10)
-  {
-    case 1:
-    strcat(roman_numeral, "X");
-    break;
-    case 2:
-    strcat(roman_numeral, "XX");
-    break;
-    case 3:
-    strcat(roman_numeral, "XXX");
-    break;
-    case 4:
-    strcat(roman_numeral, "XL");
-    break;
-    case 5:
-    strcat(roman_numeral, "L");
-    break;
-    case 6:
-    strcat(roman_numeral, "LX");
-    break;
-    case 7:
-    strcat(roman_numeral, "LXX");
-    break;
-    case 8:
-    strcat(roman_numeral, "LXXX");
-    break;
-    case 9:
-    strcat(roman_numeral, "XC");
-    break;
-    default:
-    break;
-  }
+  int index = arabic_value_tens_digit % 10;
+  strcat(roman_numeral, roman_numeral_tens_digit[index]);
 }
 
 static void convert_to_roman_numeral_from_arabic_value_100_through_900(char * roman_numeral, const unsigned int arabic_value)
 {
   unsigned int arabic_value_hundreds_digit = arabic_value / 100;
 
-  switch (arabic_value_hundreds_digit % 10)
-  {
-    case 1:
-    strcat(roman_numeral, "C");
-    break;
-    case 2:
-    strcat(roman_numeral, "CC");
-    break;
-    case 3:
-    strcat(roman_numeral, "CCC");
-    break;
-    case 4:
-    strcat(roman_numeral, "CD");
-    break;
-    case 5:
-    strcat(roman_numeral, "D");
-    break;
-    case 6:
-    strcat(roman_numeral, "DC");
-    break;
-    case 7:
-    strcat(roman_numeral, "DCC");
-    break;
-    case 8:
-    strcat(roman_numeral, "DCCC");
-    break;
-    case 9:
-    strcat(roman_numeral, "CM");
-    break;
-    default:
-    break;
-  }
+  int index = arabic_value_hundreds_digit % 10;
+  strcat(roman_numeral, roman_numeral_hundreds_digit[index]);
 }
 
 static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(char * roman_numeral, const unsigned int arabic_value)
 {
   unsigned int arabic_value_thousands_digit = arabic_value / 1000;
 
-  switch (arabic_value_thousands_digit % 4)
-  {
-    case 1:
-    strcat(roman_numeral, "M");
-    break;
-    case 2:
-    strcat(roman_numeral, "MM");
-    break;
-    case 3:
-    strcat(roman_numeral, "MMM");
-    break;
-    default:
-    break;
-  }
+  int index = arabic_value_thousands_digit % 10;
+  strcat(roman_numeral, roman_numeral_thousands_digit[index]);
 }
