@@ -34,6 +34,10 @@ bool subtract_two_roman_numerals(char * result, const char * lhs, const char * r
     convert_to_roman_numeral_from_arabic_value(result, result_arabic_value);
     success = true;
   }
+  else
+  {
+    strcpy(result, invalid_result);
+  }
 
   return success;
 }
