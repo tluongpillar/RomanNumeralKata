@@ -45,6 +45,7 @@ bool is_valid_roman_numeral(const char * roman_numeral)
     }
   }
 
+  bool is_valid = false;
   unsigned int roman_numeral_arabic_value = convert_to_arabic_value_from_roman_numeral(roman_numeral);
   char * expected_roman_numeral = calloc(strlen(MAX_ROMAN_NUMERAL) + 1, sizeof(char));
 
@@ -52,11 +53,11 @@ bool is_valid_roman_numeral(const char * roman_numeral)
 
   if (strcmp(expected_roman_numeral, roman_numeral) == 0)
   {
-    return true;
+    is_valid = true;
   }
 
   free(expected_roman_numeral);
   expected_roman_numeral = NULL;
 
-  return false;
+  return is_valid;
 }
