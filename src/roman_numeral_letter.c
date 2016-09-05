@@ -2,6 +2,8 @@
 
 bool is_roman_numeral_letter(const char roman_numeral_letter)
 {
+  bool is_valid = false;
+
   switch (toupper(roman_numeral_letter))
   {
     case ROMAN_NUMERAL_LETTER_I:
@@ -11,10 +13,12 @@ bool is_roman_numeral_letter(const char roman_numeral_letter)
     case ROMAN_NUMERAL_LETTER_C:
     case ROMAN_NUMERAL_LETTER_D:
     case ROMAN_NUMERAL_LETTER_M:
-      return true;
+      is_valid = true;
     default:
-      return false;
+      break;
   }
+
+  return is_valid;
 }
 
 unsigned int get_arabic_value_from_roman_numeral_letter(const char roman_numeral_letter)
