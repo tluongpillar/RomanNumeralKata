@@ -38,6 +38,17 @@ static void reset_string_variables()
   memset(actual_result, 0, strlen(actual_result));
 }
 
+START_TEST(test_add_two_roman_numerals__given_A_plus_I__returns_INVALID_string)
+{
+  strcpy(lhs_roman_numeral, "A");
+  strcpy(rhs_roman_numeral, "I");
+
+  add_two_roman_numerals(actual_result, lhs_roman_numeral, rhs_roman_numeral);
+
+  ck_assert_str_eq(failed_result, actual_result);
+}
+END_TEST
+
 START_TEST(test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_INVALID_string)
 {
   strcpy(lhs_roman_numeral, MAX_ROMAN_NUMERAL);
@@ -186,6 +197,7 @@ Suite * roman_numeral_operation_suite()
   tcase_add_checked_fixture(tcase_core, setup, teardown);
 
   tcase_set_timeout(tcase_core, 3600);
+  tcase_add_test(tcase_core, test_add_two_roman_numerals__given_A_plus_I__returns_INVALID_string);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_empty_string__returns_true);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_invalid_out_of_order_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_invalid_roman_numeral__returns_false);
