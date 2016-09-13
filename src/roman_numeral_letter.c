@@ -21,7 +21,7 @@ bool is_roman_numeral_letter(const char roman_numeral_letter)
   return is_valid;
 }
 
-unsigned int get_arabic_value_from_roman_numeral_letter(const char roman_numeral_letter)
+int get_arabic_value_from_roman_numeral_letter(const char roman_numeral_letter)
 {
   int arabic_value = ARABIC_VALUE_ZERO;
 
@@ -55,7 +55,7 @@ unsigned int get_arabic_value_from_roman_numeral_letter(const char roman_numeral
   return arabic_value;
 }
 
-char get_roman_numeral_letter_from_arabic_value(const unsigned int arabic_value)
+char get_roman_numeral_letter_from_arabic_value(const int arabic_value)
 {
   char roman_numeral_letter = '\0';
 
