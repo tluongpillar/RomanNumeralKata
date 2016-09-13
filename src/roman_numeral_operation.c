@@ -27,18 +27,20 @@ bool add_two_roman_numerals(char * result, const char * lhs, const char * rhs){
 bool subtract_two_roman_numerals(char * result, const char * lhs, const char * rhs)
 {
   bool success = false;
-  unsigned int lhs_arabic_value = convert_to_arabic_value_from_roman_numeral(lhs);
-  unsigned int rhs_arabic_value = convert_to_arabic_value_from_roman_numeral(rhs);
+  strcpy(result, invalid_result);
 
-  if (lhs_arabic_value >= rhs_arabic_value)
+  if (is_valid_roman_numeral(lhs) && is_valid_roman_numeral(rhs))
   {
-    unsigned int result_arabic_value = lhs_arabic_value - rhs_arabic_value;
-    convert_to_roman_numeral_from_arabic_value(result, result_arabic_value);
-    success = true;
-  }
-  else
-  {
-    strcpy(result, invalid_result);
+    unsigned int lhs_arabic_value = convert_to_arabic_value_from_roman_numeral(lhs);
+    unsigned int rhs_arabic_value = convert_to_arabic_value_from_roman_numeral(rhs);
+
+    if (lhs_arabic_value >= rhs_arabic_value)
+    {
+      memset(result, 0, strlen(result));
+      unsigned int result_arabic_value = lhs_arabic_value - rhs_arabic_value;
+      convert_to_roman_numeral_from_arabic_value(result, result_arabic_value);
+      success = true;
+    }
   }
 
   return success;
