@@ -14,6 +14,7 @@ cd falconkata/
 make clean
 make check
 ```
+- The tests take about one minute to complete. 
 
 ### Compiling libromancal
 ```
