@@ -1,5 +1,7 @@
 #include "include/check_roman_numeral_conversion.h"
 
+static const int result_when_null_pointer_detected = -9999;
+
 static const char * roman_numeral_ones_digit[10] = {
   "\0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
 };
@@ -104,6 +106,13 @@ START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_MMMCMXCIX_max_
 }
 END_TEST
 
+START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_null_pointer__returns_negative_1)
+{
+  void * null_pointer = NULL;
+  ck_assert_uint_eq(result_when_null_pointer_detected, convert_to_arabic_value_from_roman_numeral(null_pointer));
+}
+END_TEST
+
 Suite * roman_numeral_conversion_suite()
 {
   Suite *suite;
@@ -120,6 +129,7 @@ Suite * roman_numeral_conversion_suite()
 
   tcase_add_checked_fixture(tcase_core, setup, teardown);
 
+  tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_null_pointer__returns_negative_9999);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_3999__returns_MMMCMXCIX);
   tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1000_through_3000__returns_M_through_MMM, start_index, roman_numeral_thousands_digit_length);
   tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_100_through_900__returns_C_through_CM, start_index, roman_numeral_hundreds_digit_length);
