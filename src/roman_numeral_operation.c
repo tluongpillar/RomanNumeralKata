@@ -2,7 +2,7 @@
 
 static char * invalid_result = "INVALID";
 
-bool add_two_roman_numerals(const char * result, const char * lhs, const char * rhs){
+bool add_two_roman_numerals(char * result, const char * lhs, const char * rhs){
   bool success = false;
   strcpy(result, invalid_result);
 
@@ -24,7 +24,7 @@ bool add_two_roman_numerals(const char * result, const char * lhs, const char * 
   return success;
 }
 
-bool subtract_two_roman_numerals(const char * result, const char * lhs, const char * rhs)
+bool subtract_two_roman_numerals(char * result, const char * lhs, const char * rhs)
 {
   bool success = false;
   strcpy(result, invalid_result);
