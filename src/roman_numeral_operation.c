@@ -56,33 +56,32 @@ bool subtract_two_roman_numerals(char * result, const char * lhs, const char * r
 
 bool is_valid_roman_numeral(const char * roman_numeral)
 {
-  if (!roman_numeral)
-  {
-    return false;
-  }
-
-  int index;
-  for (index = 0; index < strlen(roman_numeral); ++index)
-  {
-    if (!is_roman_numeral_letter(roman_numeral[index]))
-    {
-      return false;
-    }
-  }
-
   bool is_valid = false;
-  int roman_numeral_arabic_value = convert_to_arabic_value_from_roman_numeral(roman_numeral);
-  char * expected_roman_numeral = calloc(strlen(MAX_ROMAN_NUMERAL) + 1, sizeof(char));
 
-  convert_to_roman_numeral_from_arabic_value(expected_roman_numeral, roman_numeral_arabic_value);
-
-  if (strcmp(expected_roman_numeral, roman_numeral) == 0)
+  if (roman_numeral)
   {
-    is_valid = true;
-  }
+    int index;
+    for (index = 0; index < strlen(roman_numeral); ++index)
+    {
+      if (!is_roman_numeral_letter(roman_numeral[index]))
+      {
+        return false;
+      }
+    }
 
-  free(expected_roman_numeral);
-  expected_roman_numeral = NULL;
+    int roman_numeral_arabic_value = convert_to_arabic_value_from_roman_numeral(roman_numeral);
+    char * expected_roman_numeral = calloc(strlen(MAX_ROMAN_NUMERAL) + 1, sizeof(char));
+
+    convert_to_roman_numeral_from_arabic_value(expected_roman_numeral, roman_numeral_arabic_value);
+
+    if (strcmp(expected_roman_numeral, roman_numeral) == 0)
+    {
+      is_valid = true;
+    }
+
+    free(expected_roman_numeral);
+    expected_roman_numeral = NULL;
+  }
 
   return is_valid;
 }
