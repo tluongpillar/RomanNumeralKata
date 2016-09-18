@@ -13,16 +13,16 @@ static const char * roman_numeral_thousands_digit[3] = {
   "M", "MM", "MMM"
 };
 
-static const unsigned int arabic_value_ones_digit[10] = {
+static const int arabic_value_ones_digit[10] = {
   0, 1, 2, 3, 4, 5, 6, 7, 8, 9
 };
-static const unsigned int arabic_value_tens_digit[9] = {
+static const int arabic_value_tens_digit[9] = {
   10, 20, 30, 40, 50, 60, 70, 80, 90
 };
-static const unsigned int arabic_value_hundreds_digit[9] = {
+static const int arabic_value_hundreds_digit[9] = {
   100, 200, 300, 400, 500, 600, 700, 800, 900
 };
-static const unsigned int arabic_value_thousands_digit[3] = {
+static const int arabic_value_thousands_digit[3] = {
   1000, 2000, 3000
 };
 
