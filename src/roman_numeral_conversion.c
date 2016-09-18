@@ -20,7 +20,7 @@ static void convert_to_roman_numeral_from_arabic_value_10_through_90(const char 
 static void convert_to_roman_numeral_from_arabic_value_100_through_900(const char * roman_numeral, const int arabic_value);
 static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(const char * roman_numeral, const int arabic_value);
 
-void convert_to_roman_numeral_from_arabic_value(const char * roman_numeral, const int arabic_value)
+bool convert_to_roman_numeral_from_arabic_value(const char * roman_numeral, const int arabic_value)
 {
   convert_to_roman_numeral_from_arabic_value_1000_through_3000(roman_numeral, arabic_value);
   convert_to_roman_numeral_from_arabic_value_100_through_900(roman_numeral, arabic_value);

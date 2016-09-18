@@ -41,6 +41,13 @@ static void teardown()
   roman_numeral = NULL;
 }
 
+START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_1__returns_true)
+{
+  bool did_convert_successfully = convert_to_roman_numeral_from_arabic_value(roman_numeral, 1);
+  ck_assert(true == did_convert_successfully);
+}
+END_TEST
+
 START_TEST(test_convert_to_roman_numeral_from_arabic_value__given_0_through_9__returns_empty_string_through_IX)
 {
   convert_to_roman_numeral_from_arabic_value(roman_numeral, arabic_value_ones_digit[_i]);
@@ -129,6 +136,7 @@ Suite * roman_numeral_conversion_suite()
 
   tcase_add_checked_fixture(tcase_core, setup, teardown);
 
+  tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1__returns_true);
   tcase_add_test(tcase_core, test_convert_to_arabic_value_from_roman_numeral__given_null_pointer__returns_negative_9999);
   tcase_add_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_3999__returns_MMMCMXCIX);
   tcase_add_loop_test(tcase_core, test_convert_to_roman_numeral_from_arabic_value__given_1000_through_3000__returns_M_through_MMM, start_index, roman_numeral_thousands_digit_length);
