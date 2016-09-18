@@ -217,6 +217,13 @@ START_TEST(test_is_valid_roman_numeral__given_empty_string__returns_true)
 }
 END_TEST
 
+START_TEST(test_is_valid_roman_numeral__given_null_pointer__returns_false)
+{
+  void * null_pointer = NULL;
+  ck_assert(true == is_valid_roman_numeral(null_pointer));
+}
+END_TEST
+
 Suite * roman_numeral_operation_suite()
 {
   Suite *suite;
@@ -236,6 +243,7 @@ Suite * roman_numeral_operation_suite()
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_invalid_out_of_order_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_invalid_roman_numeral__returns_false);
   tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_MAX_ROMAN_NUMERAL__returns_true);
+  tcase_add_test(tcase_core, test_is_valid_roman_numeral__given_null_pointer__returns_false);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_INVALID_string);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_MAX_ROMAN_NUMERAL_plus_I__returns_false);
   tcase_add_test(tcase_core, test_add_two_roman_numerals__given_I_plus_I__returns_true);
