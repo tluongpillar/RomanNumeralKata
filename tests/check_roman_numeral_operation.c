@@ -63,7 +63,7 @@ END_TEST
 START_TEST(test_add_two_roman_numerals__given_result_null_pointer__returns_false)
 {
   void * null_pointer = NULL;
-  strcpy(lhs_roman_numeral, "A");
+  strcpy(lhs_roman_numeral, "I");
   strcpy(rhs_roman_numeral, "I");
 
   bool did_add_successfully = add_two_roman_numerals(null_pointer, lhs_roman_numeral, rhs_roman_numeral);
@@ -153,8 +153,10 @@ END_TEST
 START_TEST(test_subtract_two_roman_numerals__given_result_null_pointer__returns_false)
 {
   void * null_pointer = NULL;
+  strcpy(lhs_roman_numeral, "II");
+  strcpy(rhs_roman_numeral, "I");
 
-  bool did_subtract_successfully = subtract_two_roman_numerals(null_pointer, "II", "I");
+  bool did_subtract_successfully = subtract_two_roman_numerals(null_pointer, lhs_roman_numeral, rhs_roman_numeral);
 
   ck_assert(false == did_subtract_successfully);
 }
