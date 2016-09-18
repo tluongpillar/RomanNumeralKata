@@ -22,11 +22,18 @@ static void convert_to_roman_numeral_from_arabic_value_1000_through_3000(const c
 
 bool convert_to_roman_numeral_from_arabic_value(const char * roman_numeral, const int arabic_value)
 {
-  convert_to_roman_numeral_from_arabic_value_1000_through_3000(roman_numeral, arabic_value);
-  convert_to_roman_numeral_from_arabic_value_100_through_900(roman_numeral, arabic_value);
-  convert_to_roman_numeral_from_arabic_value_10_through_90(roman_numeral, arabic_value);
-  convert_to_roman_numeral_from_arabic_value_1_through_9(roman_numeral, arabic_value);
-  return true;
+  bool success = false;
+
+  if (arabic_value >= 0 && arabic_value <= MAX_ROMAN_NUMERAL_ARABIC_VALUE)
+  {
+    convert_to_roman_numeral_from_arabic_value_1000_through_3000(roman_numeral, arabic_value);
+    convert_to_roman_numeral_from_arabic_value_100_through_900(roman_numeral, arabic_value);
+    convert_to_roman_numeral_from_arabic_value_10_through_90(roman_numeral, arabic_value);
+    convert_to_roman_numeral_from_arabic_value_1_through_9(roman_numeral, arabic_value);
+    success = true;
+  }
+
+  return success;
 }
 
 int convert_to_arabic_value_from_roman_numeral(const char * roman_numeral)
