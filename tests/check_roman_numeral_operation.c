@@ -95,11 +95,11 @@ END_TEST
 
 START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success)
 {
-  const unsigned int lhs_arabic_value = _i;
-  const unsigned int rhs_arabic_value_upper_limit = MAX_ROMAN_NUMERAL_ARABIC_VALUE - lhs_arabic_value;
-  unsigned int expected_result_arabic_value;
+  const int lhs_arabic_value = _i;
+  const int rhs_arabic_value_upper_limit = MAX_ROMAN_NUMERAL_ARABIC_VALUE - lhs_arabic_value;
+  int expected_result_arabic_value;
 
-  unsigned int rhs_arabic_value;
+  int rhs_arabic_value;
   for (rhs_arabic_value = 0; rhs_arabic_value <= rhs_arabic_value_upper_limit; ++rhs_arabic_value)
   {
     expected_result_arabic_value = lhs_arabic_value + rhs_arabic_value;
@@ -173,9 +173,9 @@ END_TEST
 
 START_TEST(test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success)
 {
-  const unsigned int lhs_arabic_value = _i;
-  unsigned int expected_result_arabic_value;
-  unsigned int rhs_arabic_value;
+  const int lhs_arabic_value = _i;
+  int expected_result_arabic_value;
+  int rhs_arabic_value;
 
   for (rhs_arabic_value = lhs_arabic_value; rhs_arabic_value >= 0 && rhs_arabic_value <= lhs_arabic_value; --rhs_arabic_value)
   {
