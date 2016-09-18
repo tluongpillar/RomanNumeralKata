@@ -22,6 +22,25 @@ make clean
 make libromancal
 ```
 
+### add_two_roman_numerals
+```
+bool add_two_roman_numerals(char * result, const char * lhs, const char * rhs);
+```
+- Passing in null pointer inputs will return false and result string "INVALID"
+- Passing in invalid roman numerals will return false and result string "INVALID"
+- Passing in roman numerals that sum over the max roman numeral value will return false and result string "INVALID"
+- Otherwise, passing in valid roman numerals that add to be valid roman numeral will return true and correct roman numeral string.
+
+### subtract_two_roman_numerals
+```
+bool subtract_two_roman_numerals(char * result, const char * lhs, const char * rhs);
+```
+- Passing in null pointer inputs will return false and result string "INVALID"
+- Passing in invalid roman numerals will return false and result string "INVALID"
+- Passing in roman numerals that subract to negative results will return false and result string "INVALID"
+- Otherwise, passing in valid roman numerals that subtract to valid roman numeral will return true and correct roman numeral string.
+
+
 ## Roman Numeral Calculator
 For this programming exercise, you will be creating a library which will allow the addition and subtraction of Roman numerals.
 
