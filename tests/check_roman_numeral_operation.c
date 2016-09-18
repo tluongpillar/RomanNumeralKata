@@ -220,7 +220,7 @@ END_TEST
 START_TEST(test_is_valid_roman_numeral__given_null_pointer__returns_false)
 {
   void * null_pointer = NULL;
-  ck_assert(true == is_valid_roman_numeral(null_pointer));
+  ck_assert(false == is_valid_roman_numeral(null_pointer));
 }
 END_TEST
 
