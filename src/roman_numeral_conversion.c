@@ -26,6 +26,7 @@ bool convert_to_roman_numeral_from_arabic_value(const char * roman_numeral, cons
   convert_to_roman_numeral_from_arabic_value_100_through_900(roman_numeral, arabic_value);
   convert_to_roman_numeral_from_arabic_value_10_through_90(roman_numeral, arabic_value);
   convert_to_roman_numeral_from_arabic_value_1_through_9(roman_numeral, arabic_value);
+  return true;
 }
 
 int convert_to_arabic_value_from_roman_numeral(const char * roman_numeral)
