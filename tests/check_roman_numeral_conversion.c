@@ -106,7 +106,7 @@ START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_MMMCMXCIX_max_
 }
 END_TEST
 
-START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_null_pointer__returns_negative_1)
+START_TEST(test_convert_to_arabic_value_from_roman_numeral__given_null_pointer__returns_negative_9999)
 {
   void * null_pointer = NULL;
   ck_assert_uint_eq(result_when_null_pointer_detected, convert_to_arabic_value_from_roman_numeral(null_pointer));

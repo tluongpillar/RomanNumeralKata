@@ -1,5 +1,7 @@
 #include "../include/roman_numeral_conversion.h"
 
+static const int return_value_when_null_pointer_detected = -9999;
+
 static const char * roman_numeral_ones_digit[10] = {
   "\0", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"
 };
@@ -28,6 +30,11 @@ void convert_to_roman_numeral_from_arabic_value(const char * roman_numeral, cons
 
 int convert_to_arabic_value_from_roman_numeral(const char * roman_numeral)
 {
+  if (!roman_numeral)
+  {
+    return return_value_when_null_pointer_detected;
+  }
+
   int arabic_value = 0;
 
   int roman_numeral_count = strlen(roman_numeral);
