@@ -150,6 +150,17 @@ START_TEST(test_add_two_roman_numerals__given_all_valid_input_combination__retur
 }
 END_TEST
 
+START_TEST(test_subtract_two_roman_numerals__given_one_operand_null_pointer__returns_false)
+{
+  void * null_pointer = NULL;
+  strcpy(rhs_roman_numeral, "I");
+
+  bool did_subtract_successfully = subtract_two_roman_numerals(actual_result, null_pointer, rhs_roman_numeral);
+
+  ck_assert(false == did_subtract_successfully);
+}
+END_TEST
+
 START_TEST(test_subtract_two_roman_numerals__given_result_null_pointer__returns_false)
 {
   void * null_pointer = NULL;
@@ -304,6 +315,7 @@ Suite * roman_numeral_operation_suite()
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_II_minus_I__returns_true);
   tcase_add_loop_test(tcase_core, test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success, start_index, all_valid_combination_inputs_length);
   tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_result_null_pointer__returns_false);
+  tcase_add_test(tcase_core, test_subtract_two_roman_numerals__given_one_operand_null_pointer__returns_false);
 
   suite_add_tcase(suite, tcase_core);
 
