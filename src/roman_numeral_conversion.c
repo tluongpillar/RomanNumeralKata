@@ -24,7 +24,7 @@ bool convert_to_roman_numeral_from_arabic_value(char * roman_numeral, const int 
 {
   bool success = false;
 
-  if (arabic_value >= 0 && arabic_value <= MAX_ROMAN_NUMERAL_ARABIC_VALUE)
+  if (roman_numeral && arabic_value >= 0 && arabic_value <= MAX_ROMAN_NUMERAL_ARABIC_VALUE)
   {
     convert_to_roman_numeral_from_arabic_value_1000_through_3000(roman_numeral, arabic_value);
     convert_to_roman_numeral_from_arabic_value_100_through_900(roman_numeral, arabic_value);
