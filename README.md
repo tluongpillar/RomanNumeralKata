@@ -14,7 +14,15 @@ cd falconkata/
 make clean
 make check
 ```
-- The tests take about one minute to complete. 
+- The tests take about one minute to complete.
+This is because of these two tests.
+```
+test_add_two_roman_numerals__given_all_valid_input_combination__returns_correct_sum_with_success
+test_subtract_two_roman_numerals__given_all_valid_combination_inputs___returns_correct_result_with_success
+in check_roman_numeral_operation.c
+```
+They test through all the valid combination inputs. I used libcheck's loop test and CK_FORK mode to speed up the test run time from five minutes to about one minute.
+I chose this approach of testing all valid combination inputs because all valid roman numerals is a known set and should be computable by current hardware and software, allowing for total testing coverage of roman numeral addition and subtraction.
 
 ### Compiling libromancal
 ```
