@@ -1,35 +1,17 @@
 CC = gcc
 CFLAGS = -std=c99 -fPIC
-SRC = src/
-TEST = tests/
+SRC := $(patsubst %.c,%.o,$(wildcard src/*.c))
+TEST := $(patsubst %.c,%.o,$(wildcard tests/*.c))
 
 clean:
-	rm -f libromancal.so roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_tests check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o
+	rm -f *.so check_tests $(SRC) $(TEST)
 
-check: roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o
-	${CC} ${CFLAGS} -o check_tests roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o check_suite_runner.o check_roman_numeral_operation.o check_roman_numeral_conversion.o check_roman_numeral_letter.o -lcheck -lpthread -lm -lrt
+check: $(SRC) $(TEST)
+	${CC} ${CFLAGS} -o check_tests $(SRC) $(TEST) -lcheck -lpthread -lm -lrt
 	./check_tests
 
-libromancal: roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o
-	${CC} ${CFLAGS} -shared -o libromancal.so roman_numeral_operation.o roman_numeral_conversion.o roman_numeral_letter.o
+libromancal: $(SRC)
+	${CC} ${CFLAGS} -shared -o libromancal.so $(SRC)
 
-roman_numeral_operation.o:
-	${CC} ${CFLAGS} -c ${SRC}roman_numeral_operation.c -o roman_numeral_operation.o
-
-roman_numeral_conversion.o:
-	${CC} ${CFLAGS} -c ${SRC}roman_numeral_conversion.c -o roman_numeral_conversion.o
-
-roman_numeral_letter.o:
-	${CC} ${CFLAGS} -c ${SRC}roman_numeral_letter.c -o roman_numeral_letter.o
-
-check_suite_runner.o:
-	${CC} ${CFLAGS} -c ${TEST}check_suite_runner.c -o check_suite_runner.o
-
-check_roman_numeral_operation.o:
-	${CC} ${CFLAGS} -c ${TEST}check_roman_numeral_operation.c -o check_roman_numeral_operation.o
-
-check_roman_numeral_conversion.o:
-	${CC} ${CFLAGS} -c ${TEST}check_roman_numeral_conversion.c -o check_roman_numeral_conversion.o
-
-check_roman_numeral_letter.o:
-	${CC} ${CFLAGS} -c ${TEST}check_roman_numeral_letter.c -o check_roman_numeral_letter.o
+.c.o:
+	${CC} ${CFLAGS} -c $< -o $@
